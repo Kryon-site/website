@@ -6,15 +6,16 @@
     <title>Aether AI - Advanced Business Automation & AI Agents</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+    <div class="noise-overlay"></div>
     <canvas id="hero-canvas"></canvas>
 
-    <nav id="navbar">
+    <nav id="navbar" class="reveal">
         <div class="logo">
             <i data-lucide="layers"></i>
             <span>Aether AI</span>
@@ -33,75 +34,94 @@
 
     <main>
         <section id="hero">
-            <div class="hero-content fade-in">
-                <div class="badge">
-                    <i data-lucide="sparkles"></i>
-                    <span>The next generation of business intelligence</span>
+            <div class="hero-layout">
+                <div class="hero-text reveal">
+                    <div class="badge-new">
+                        <span class="line"></span>
+                        <span>Intelligence Orchestrated</span>
+                    </div>
+                    <h1 class="split-text">Automate the <span class="italic">complex.</span> <br>Scale with <span class="outline">Intelligence.</span></h1>
+                    <p class="hero-desc">Aether AI empowers your enterprise with sophisticated AI agents and seamless workflows. Transform operations with autonomous intelligence designed for the modern era.</p>
+                    <div class="hero-cta-group">
+                        <button class="btn-primary-new">Deploy Agents <i data-lucide="arrow-up-right"></i></button>
+                        <button class="btn-link">Book a Demo</button>
+                    </div>
                 </div>
-                <h1>Automate the complex. <br><span class="highlight">Scale with Intelligence.</span></h1>
-                <p>Aether AI empowers your enterprise with sophisticated AI agents and seamless workflows. Transform operations with autonomous intelligence designed for the modern era.</p>
-                <div class="hero-btns">
-                    <button class="btn-primary large">Deploy Agents</button>
-                    <button class="btn-outline large">Book a Demo</button>
+
+                <div class="hero-stats-asymmetric">
+                    <div class="stat-card reveal delay-1">
+                        <span class="stat-num">99.9<small>%</small></span>
+                        <span class="stat-label">Uptime Reliability</span>
+                    </div>
+                    <div class="stat-card reveal delay-2">
+                        <span class="stat-num">24<small>/7</small></span>
+                        <span class="stat-label">Autonomous Ops</span>
+                    </div>
                 </div>
-                <div class="hero-features">
-                    <div class="hero-feature-card fade-in delay-1">
-                        <div class="icon-box"><i data-lucide="bot"></i></div>
-                        <h3>Autonomous Agents</h3>
-                        <p>Self-learning entities that handle complex tasks with precision.</p>
-                    </div>
-                    <div class="hero-feature-card fade-in delay-2">
-                        <div class="icon-box"><i data-lucide="git-branch"></i></div>
-                        <h3>Dynamic Workflows</h3>
-                        <p>Intelligent orchestration that adapts to your business needs.</p>
-                    </div>
-                    <div class="hero-feature-card fade-in delay-3">
-                        <div class="icon-box"><i data-lucide="brain"></i></div>
-                        <h3>Cognitive Insights</h3>
-                        <p>Deep data analysis that drives strategic decision making.</p>
-                    </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="reveal">
+            <div class="overlap-grid">
+                <div class="grid-image">
+                    <div class="image-placeholder"></div>
+                </div>
+                <div class="grid-content">
+                    <span class="section-tag">Philosophy</span>
+                    <h2 class="serif-title">Built for the <br>next generation.</h2>
+                    <p>We believe in AI that doesn't just process data, but understands intent. Our agents are engineered to learn, adapt, and evolve with your business architecture.</p>
                 </div>
             </div>
         </section>
 
         <section id="features">
-            <div class="section-header">
-                <h2>Engineered for Excellence</h2>
-                <p>Everything you need to scale your business intelligence without compromising on control or security.</p>
+            <div class="features-header reveal">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="serif-title">Engineered for <br><span class="italic">Excellence.</span></h2>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon-box blue"><i data-lucide="user-check"></i></div>
-                    <h3>Custom AI Agents</h3>
-                    <p>Build and deploy specialized agents tailored to your unique business processes and domain expertise.</p>
+
+            <div class="editorial-grid">
+                <div class="feature-item reveal">
+                    <span class="item-num">01</span>
+                    <div class="item-content">
+                        <h3>Custom AI Agents</h3>
+                        <p>Build and deploy specialized agents tailored to your unique business processes and domain expertise.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="icon-box emerald"><i data-lucide="workflow"></i></div>
-                    <h3>Workflow Orchestration</h3>
-                    <p>Connect your tools and data streams into a unified, AI-driven engine that runs 24/7.</p>
+                <div class="feature-item reveal">
+                    <span class="item-num">02</span>
+                    <div class="item-content">
+                        <h3>Workflow Orchestration</h3>
+                        <p>Connect your tools and data streams into a unified, AI-driven engine that runs 24/7.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="icon-box orange"><i data-lucide="shield-check"></i></div>
-                    <h3>Enterprise Security</h3>
-                    <p>Bank-grade encryption and rigorous compliance standards ensure your data remains sovereign.</p>
+                <div class="feature-item reveal">
+                    <span class="item-num">03</span>
+                    <div class="item-content">
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade encryption and rigorous compliance standards ensure your data remains sovereign.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="icon-box purple"><i data-lucide="database"></i></div>
-                    <h3>Scalable Infrastructure</h3>
-                    <p>Designed to handle high-throughput operations with near-zero latency and infinite scalability.</p>
+                <div class="feature-item reveal">
+                    <span class="item-num">04</span>
+                    <div class="item-content">
+                        <h3>Scalable Infrastructure</h3>
+                        <p>Designed to handle high-throughput operations with near-zero latency and infinite scalability.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="cta">
-            <div class="cta-card">
-                <h2>Ready to automate your future?</h2>
-                <p>Join the leaders in AI-driven business transformation with Aether AI and redefine what's possible.</p>
-                <div class="cta-btns">
-                    <button class="btn-primary large">Get Started Now</button>
-                    <button class="btn-outline large">Contact Sales</button>
+        <section id="cta" class="reveal">
+            <div class="cta-content">
+                <h2 class="serif-title">Ready to automate <br>your <span class="italic">future?</span></h2>
+                <p>Join the leaders in AI-driven business transformation.</p>
+                <div class="cta-actions">
+                    <button class="btn-primary-new">Get Started Now</button>
+                    <button class="btn-link">Talk to Sales</button>
                 </div>
             </div>
+            <div class="cta-background"></div>
         </section>
     </main>
 

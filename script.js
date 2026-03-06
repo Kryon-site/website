@@ -1,28 +1,32 @@
-// Aether AI - Advanced 3D Neural Mesh
+// Aether AI - Premium Editorial 3D & Interaction
 const canvas = document.querySelector('#hero-canvas');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: "high-performance"
+});
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// Neural Mesh Implementation
+// Neural Mesh Implementation - Adapted for Light Theme
 const geometry = new THREE.IcosahedronGeometry(4, 15);
-const originalPositions = geometry.attributes.position.array.slice();
 
 const material = new THREE.ShaderMaterial({
     uniforms: {
         uTime: { value: 0 },
+        // Use a sophisticated dark teal for the mesh lines in light theme
         uColor: { value: new THREE.Color(0x278795) },
-        uSecondaryColor: { value: new THREE.Color(0x184E5A) }
+        uSecondaryColor: { value: new THREE.Color(0x0A0A0A) }
     },
     vertexShader: `
         uniform float uTime;
         varying vec3 vPosition;
         varying float vNoise;
 
-        // Simple noise function
         vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
         vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
         vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
@@ -76,11 +80,10 @@ const material = new THREE.ShaderMaterial({
 
         void main() {
             vPosition = position;
-            float noise = snoise(position * 0.5 + uTime * 0.2);
+            float noise = snoise(position * 0.4 + uTime * 0.1);
             vNoise = noise;
-            vec3 newPosition = position + normal * noise * 0.5;
+            vec3 newPosition = position + normal * noise * 0.4;
             gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-            gl_PointSize = 2.0;
         }
     `,
     fragmentShader: `
@@ -91,7 +94,8 @@ const material = new THREE.ShaderMaterial({
         varying float vNoise;
 
         void main() {
-            float alpha = 0.1 + (vNoise + 1.0) * 0.2;
+            // Lower alpha for light theme
+            float alpha = 0.05 + (vNoise + 1.0) * 0.1;
             vec3 finalColor = mix(uSecondaryColor, uColor, (vNoise + 1.0) * 0.5);
             gl_FragColor = vec4(finalColor, alpha);
         }
@@ -103,44 +107,34 @@ const material = new THREE.ShaderMaterial({
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
-// Points for "stars" or particles
-const pointsGeometry = new THREE.BufferGeometry();
-const pointsCount = 1000;
-const posArray = new Float32Array(pointsCount * 3);
+camera.position.z = 10;
 
-for(let i = 0; i < pointsCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 20;
-}
+// Mouse Tracking for Parallax
+let targetX = 0, targetY = 0;
+let mouseX = 0, mouseY = 0;
 
-pointsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const pointsMaterial = new THREE.PointsMaterial({
-    size: 0.02,
-    color: 0x278795,
-    transparent: true,
-    opacity: 0.5
+window.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
-const pointsMesh = new THREE.Points(pointsGeometry, pointsMaterial);
-scene.add(pointsMesh);
+// Scroll Logic & Reveal Animations
+const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+};
 
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
 
-camera.position.z = 8;
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Mouse tracking
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-
-window.addEventListener('mousemove', (event) => {
-    targetX = (event.clientX / window.innerWidth) - 0.5;
-    targetY = (event.clientY / window.innerHeight) - 0.5;
-});
-
-// Animation loop
+// Animation Loop
 const clock = new THREE.Clock();
 
 function animate() {
@@ -149,19 +143,17 @@ function animate() {
 
     material.uniforms.uTime.value = elapsedTime;
 
-    // Smooth follow mouse
-    mouseX += (targetX - mouseX) * 0.05;
-    mouseY += (targetY - mouseY) * 0.05;
+    // Smooth Parallax
+    mouseX += (targetX - mouseX) * 0.03;
+    mouseY += (targetY - mouseY) * 0.03;
 
-    mesh.rotation.y = elapsedTime * 0.1 + mouseX * 0.5;
-    mesh.rotation.x = mouseY * 0.5;
-
-    pointsMesh.rotation.y = -elapsedTime * 0.05;
+    mesh.rotation.y = elapsedTime * 0.05 + mouseX * 0.2;
+    mesh.rotation.x = mouseY * 0.2;
 
     renderer.render(scene, camera);
 }
 
-// Handle resize
+// Handle Resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -170,7 +162,21 @@ window.addEventListener('resize', () => {
 
 animate();
 
-// Initialize Lucide Icons
+// Initialize Icons
 if (window.lucide) {
     lucide.createIcons();
 }
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.style.padding = '1rem 4rem';
+        nav.style.background = 'rgba(255, 255, 255, 0.8)';
+        nav.style.borderBottom = '1px solid var(--border)';
+    } else {
+        nav.style.padding = '2rem 4rem';
+        nav.style.background = 'rgba(255, 255, 255, 0.01)';
+        nav.style.borderBottom = 'none';
+    }
+});
