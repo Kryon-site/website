@@ -1,86 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kryon — Three.js Brand Demo</title>
+  <title>Kryon — AI Automation</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <canvas id="c"></canvas>
-    <div id="badge">Kryon</div>
-  </div>
-  <script type="module">
-    import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
-
-    const canvas = document.getElementById('c');
-    const scene = new THREE.Scene();
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    const fov = 45;
-    const aspect = 2;  // the canvas default
-    const near = 0.1;
-    const far = 100;
-    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0,0,6);
-
-    // Brand colors
-    const BRAND = {
-      primary: getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#00aaff',
-      accent: getComputedStyle(document.documentElement).getPropertyValue('--brand-accent').trim() || '#ff5f6d'
-    };
-
-    // Rotating logo mesh (torus knot)
-    const geometry = new THREE.TorusKnotGeometry(1.1, 0.35, 200, 32);
-    const material = new THREE.MeshStandardMaterial({color: BRAND.primary, metalness:0.4, roughness:0.2, emissive: BRAND.accent});
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    // Lights
-    const hemi = new THREE.HemisphereLight('#ffffff', '#444444', 0.3);
-    scene.add(hemi);
-    const point = new THREE.PointLight(BRAND.accent, 1.2);
-    point.position.set(5,5,5);
-    scene.add(point);
-
-    function resizeRendererToDisplaySize(renderer) {
-      const canvas = renderer.domElement;
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      const needResize = canvas.width !== width || canvas.height !== height;
-      if (needResize) {
-        renderer.setSize(width, height, false);
-      }
-      return needResize;
-    }
-
-    function render(time) {
-      time *= 0.001;
-      if (resizeRendererToDisplaySize(renderer)) {
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-      }
-
-      mesh.rotation.x = time * 0.4;
-      mesh.rotation.y = time * 0.7;
-
-      renderer.render(scene, camera);
-      requestAnimationFrame(render);
-    }
-    requestAnimationFrame(render);
-
-    // Fill the viewport
-    function fitCanvas() {
-      const el = document.getElementById('app');
-      canvas.width = el.clientWidth * devicePixelRatio;
-      canvas.height = el.clientHeight * devicePixelRatio;
-      renderer.setSize(el.clientWidth, el.clientHeight, false);
-    }
-    window.addEventListener('resize', fitCanvas);
-    fitCanvas();
+  <header>
+    <h1 style="color:var(--kryon-primary);">Kryon</h1>
+    <p style="color:var(--kryon-secondary);max-width:780px">We build AI automation that replaces manual, repetitive workflows for sales, ops, and customer success — smart CRMs, outreach automation, and managed AI agents that ship results.</p>
+  </header>
+  <main>
+    <canvas id="hero"></canvas>
+    <section>
+      <h2>What we do</h2>
+      <ul>
+        <li>AI-driven Lead Ops & Outreach</li>
+        <li>Custom CRM integrations & automations</li>
+        <li>Managed agent operations & monitoring</li>
+      </ul>
+    </section>
+  </main>
+  <script>
+    // minimal three.js placeholder
+    const canvas=document.getElementById('hero'); canvas.width=window.innerWidth; canvas.height=400; const ctx=canvas.getContext('2d'); let t=0; function render(){ t+=0.03; ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle='#278795'; ctx.beginPath(); ctx.arc(canvas.width/2+Math.sin(t)*80,200,80,0,Math.PI*2); ctx.fill(); requestAnimationFrame(render);} render();
   </script>
 </body>
 </html>
