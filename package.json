@@ -1,0 +1,17 @@
+{
+  "name": "kryon-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Branded three.js demo site",
+  "scripts": {
+    "start": "lite-server --baseDir=website",
+    "deploy": "gh-pages -d website"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0",
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "three": "^0.158.0"
+  }
+}
