@@ -1,17 +1,16 @@
 :root {
-    /* Brand placeholder — will pull exact hexes from Notion */
-    --primary: #278795;
+    --primary: #278795; /* teal blue (primary) */
     --primary-hover: #1f6d78;
-    --secondary: #184E5A;
-    --bg: #ffffff; /* switched to white base */
-    --white: #0f1720; /* primary text color on white */
-    --gray-50: rgba(15, 23, 32, 0.02);
-    --gray-100: rgba(15, 23, 32, 0.04);
-    --gray-200: rgba(15, 23, 32, 0.08);
+    --secondary: #184E5A; /* deep teal (secondary) */
+    --bg: #ffffff; /* white base */
+    --white: #1E1E1E; /* near-black for primary text per Notion */
+    --gray-50: rgba(30, 30, 30, 0.02);
+    --gray-100: rgba(30, 30, 30, 0.04);
+    --gray-200: rgba(30, 30, 30, 0.08);
     --gray-400: #6b7280;
     --gray-600: #374151;
     --gray-900: #0b1220;
-    --text-main: #0f1720;
+    --text-main: #1E1E1E;
     --text-muted: #6b7280;
     --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
