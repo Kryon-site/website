@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -6,12 +6,13 @@
     <title>Kryon | AI Business Automation</title>
     <meta
       name="description"
-      content="Kryon integrates AI agents and adaptive workflows into business operations."
+      content="Kryon makes it easy to build, deploy, and manage AI workflows and agents for your business — set up in minutes, not months."
     />
+    <meta name="theme-color" content="#06080e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600;1,9..144,700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -21,10 +22,15 @@
 
     <header class="site-header">
       <nav class="nav">
-        <div class="brand">
-          <img class="brand-logo" src="logo.png" data-name="Kryon" alt="Kryon logo" />
+        <a class="brand" href="#top" aria-label="Kryon home">
+          <img
+            class="brand-logo"
+            src="media/images/logo.png"
+            data-name="Kryon"
+            alt="Kryon logo"
+          />
           <span class="brand-name">Kryon</span>
-        </div>
+        </a>
         <div class="nav-links">
           <a href="#capabilities">Capabilities</a>
           <a href="#outcomes">Outcomes</a>
@@ -32,511 +38,773 @@
           <a href="#trust">Trust</a>
         </div>
         <div class="nav-cta">
-          <button class="btn-elite-outline">View demo</button>
-          <button class="btn-elite">Contact sales</button>
+          <a class="btn-elite-outline" href="#walkthrough">View demo</a>
+          <a class="btn-elite" href="#contact">Contact sales</a>
         </div>
       </nav>
     </header>
 
-    <main>
-      <section class="hero hero-dark">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="logo.png"
-        >
-          <source src="hero.mp4" type="video/mp4" />
+    <main id="top">
+      <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="media/videos/mov.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+
         <div class="hero-content">
-          <p class="eyebrow">AI automation platform</p>
-          <h1>The #1 AI Agent for all your customer service.</h1>
-          <p class="hero-subtitle">
-            Kryon resolves complex customer requests across every channel,
-            deploying governed AI agents that integrate into your existing
-            support stack.
+          <div class="hero-badge">
+            <span class="badge-pulse"></span>
+            AI workflow platform
+          </div>
+
+          <h1 class="hero-headline">
+            AI workflows your<br />
+            business can deploy<br />
+            <em>in minutes.</em>
+          </h1>
+
+          <p class="hero-sub">
+            Kryon makes it effortless to build, deploy, and manage AI workflows — and for
+            complex tasks, our AI agents take the wheel so your team doesn't have to.
           </p>
+
           <div class="hero-actions">
-            <button class="btn btn-primary">Start free trial</button>
-            <button class="btn btn-outline">View demo</button>
+            <a class="btn-primary-lg" href="#outcomes">Get started free</a>
+            <a class="btn-ghost-lg" href="#walkthrough">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden="true">
+                <path d="M2.5 1.5l8 5-8 5v-10z" />
+              </svg>
+              See how it works
+            </a>
           </div>
-          <div class="hero-badges">
-            <span>#1 in CSAT for AI agents</span>
-            <span>Fastest time to value</span>
-            <span>Trusted by enterprise teams</span>
-            <span>24/7 customer coverage</span>
+
+
+        </div>
+
+        <div class="hero-scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <div class="scroll-bar"></div>
+        </div>
+      </section>
+
+      <section id="integrations" class="marquee-section">
+        <p class="marquee-eyebrow">Works with the tools you already use</p>
+        <div class="marquee-fade">
+          <div class="marquee-track" aria-label="Supported integrations">
+            <span class="logo-chip"><img src="media/connectors/slack.svg" alt="Slack logo" />Slack</span>
+            <span class="logo-chip"><img src="media/connectors/openai.svg" alt="OpenAI logo" />OpenAI</span>
+            <span class="logo-chip"><img src="media/connectors/notion.svg" alt="Notion logo" />Notion</span>
+            <span class="logo-chip"><img src="media/connectors/stripe.svg" alt="Stripe logo" />Stripe</span>
+            <span class="logo-chip"><img src="media/connectors/shopify.svg" alt="Shopify logo" />Shopify</span>
+            <span class="logo-chip"><img src="media/connectors/hubspot.svg" alt="HubSpot logo" />HubSpot</span>
+            <span class="logo-chip"><img src="media/connectors/airtable.svg" alt="Airtable logo" />Airtable</span>
+            <span class="logo-chip"><img src="media/connectors/github.svg" alt="GitHub logo" />GitHub</span>
+            <span class="logo-chip"><img src="media/connectors/gmail.svg" alt="Gmail logo" />Gmail</span>
+            <span class="logo-chip"><img src="media/connectors/google_drive.svg" alt="Google Drive logo" />Google Drive</span>
+            <span class="logo-chip"><img src="media/connectors/twilio.svg" alt="Twilio logo" />Twilio</span>
+            <span class="logo-chip"><img src="media/connectors/telegram.svg" alt="Telegram logo" />Telegram</span>
+            <span class="logo-chip"><img src="media/connectors/slack.svg" alt="Slack logo" />Slack</span>
+            <span class="logo-chip"><img src="media/connectors/openai.svg" alt="OpenAI logo" />OpenAI</span>
+            <span class="logo-chip"><img src="media/connectors/notion.svg" alt="Notion logo" />Notion</span>
+            <span class="logo-chip"><img src="media/connectors/stripe.svg" alt="Stripe logo" />Stripe</span>
+            <span class="logo-chip"><img src="media/connectors/shopify.svg" alt="Shopify logo" />Shopify</span>
+            <span class="logo-chip"><img src="media/connectors/hubspot.svg" alt="HubSpot logo" />HubSpot</span>
+            <span class="logo-chip"><img src="media/connectors/airtable.svg" alt="Airtable logo" />Airtable</span>
+            <span class="logo-chip"><img src="media/connectors/github.svg" alt="GitHub logo" />GitHub</span>
+            <span class="logo-chip"><img src="media/connectors/gmail.svg" alt="Gmail logo" />Gmail</span>
+            <span class="logo-chip"><img src="media/connectors/google_drive.svg" alt="Google Drive logo" />Google Drive</span>
+            <span class="logo-chip"><img src="media/connectors/twilio.svg" alt="Twilio logo" />Twilio</span>
+            <span class="logo-chip"><img src="media/connectors/telegram.svg" alt="Telegram logo" />Telegram</span>
           </div>
         </div>
       </section>
 
-      <section id="integrations" class="section connections-min reveal">
-        <p class="connections-line">We connect in with</p>
-        <div class="logo-grid logos-min" aria-label="Integrations">
-          <span class="logo-chip" data-name="Facebook">
-            <img class="logo-img" src="https://logo.clearbit.com/facebook.com" data-domain="facebook.com" data-slug="facebook" data-name="Facebook" alt="Facebook logo" title="Facebook logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Instagram">
-            <img class="logo-img" src="https://logo.clearbit.com/instagram.com" data-domain="instagram.com" data-slug="instagram" data-name="Instagram" alt="Instagram logo" title="Instagram logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="LinkedIn">
-            <img class="logo-img" src="https://logo.clearbit.com/linkedin.com" data-domain="linkedin.com" data-slug="linkedin" data-name="LinkedIn" alt="LinkedIn logo" title="LinkedIn logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Slack">
-            <img class="logo-img" src="https://logo.clearbit.com/slack.com" data-domain="slack.com" data-slug="slack" data-name="Slack" alt="Slack logo" title="Slack logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="OpenAI">
-            <img class="logo-img" src="https://logo.clearbit.com/openai.com" data-domain="openai.com" data-slug="openai" data-name="OpenAI" alt="OpenAI logo" title="OpenAI logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Gmail">
-            <img class="logo-img" src="https://logo.clearbit.com/gmail.com" data-domain="gmail.com" data-slug="gmail" data-name="Gmail" alt="Gmail logo" title="Gmail logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Drive">
-            <img class="logo-img" src="https://logo.clearbit.com/drive.google.com" data-domain="drive.google.com" data-slug="googledrive" data-name="Google Drive" alt="Google Drive logo" title="Google Drive logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Docs">
-            <img class="logo-img" src="https://logo.clearbit.com/docs.google.com" data-domain="docs.google.com" data-slug="googledocs" data-name="Google Docs" alt="Google Docs logo" title="Google Docs logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Salesforce">
-            <img class="logo-img" src="https://logo.clearbit.com/salesforce.com" data-domain="salesforce.com" data-slug="salesforce" data-name="Salesforce" alt="Salesforce logo" title="Salesforce logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="HubSpot">
-            <img class="logo-img" src="https://logo.clearbit.com/hubspot.com" data-domain="hubspot.com" data-slug="hubspot" data-name="HubSpot" alt="HubSpot logo" title="HubSpot logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Zendesk">
-            <img class="logo-img" src="https://logo.clearbit.com/zendesk.com" data-domain="zendesk.com" data-slug="zendesk" data-name="Zendesk" alt="Zendesk logo" title="Zendesk logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Intercom">
-            <img class="logo-img" src="https://logo.clearbit.com/intercom.com" data-domain="intercom.com" data-slug="intercom" data-name="Intercom" alt="Intercom logo" title="Intercom logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Stripe">
-            <img class="logo-img" src="https://logo.clearbit.com/stripe.com" data-domain="stripe.com" data-slug="stripe" data-name="Stripe" alt="Stripe logo" title="Stripe logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Shopify">
-            <img class="logo-img" src="https://logo.clearbit.com/shopify.com" data-domain="shopify.com" data-slug="shopify" data-name="Shopify" alt="Shopify logo" title="Shopify logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Notion">
-            <img class="logo-img" src="https://logo.clearbit.com/notion.so" data-domain="notion.so" data-slug="notion" data-name="Notion" alt="Notion logo" title="Notion logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Calendar">
-            <img class="logo-img" src="https://logo.clearbit.com/calendar.google.com" data-domain="calendar.google.com" data-slug="googlecalendar" data-name="Google Calendar" alt="Google Calendar logo" title="Google Calendar logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Meet">
-            <img class="logo-img" src="https://logo.clearbit.com/meet.google.com" data-domain="meet.google.com" data-slug="googlemeet" data-name="Google Meet" alt="Google Meet logo" title="Google Meet logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Sheets">
-            <img class="logo-img" src="https://logo.clearbit.com/sheets.google.com" data-domain="sheets.google.com" data-slug="googlesheets" data-name="Google Sheets" alt="Google Sheets logo" title="Google Sheets logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Google Cloud">
-            <img class="logo-img" src="https://logo.clearbit.com/cloud.google.com" data-domain="cloud.google.com" data-slug="googlecloud" data-name="Google Cloud" alt="Google Cloud logo" title="Google Cloud logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Zoom">
-            <img class="logo-img" src="https://logo.clearbit.com/zoom.us" data-domain="zoom.us" data-slug="zoom" data-name="Zoom" alt="Zoom logo" title="Zoom logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Dropbox">
-            <img class="logo-img" src="https://logo.clearbit.com/dropbox.com" data-domain="dropbox.com" data-slug="dropbox" data-name="Dropbox" alt="Dropbox logo" title="Dropbox logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="GitHub">
-            <img class="logo-img" src="https://logo.clearbit.com/github.com" data-domain="github.com" data-slug="github" data-name="GitHub" alt="GitHub logo" title="GitHub logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="GitLab">
-            <img class="logo-img" src="https://logo.clearbit.com/gitlab.com" data-domain="gitlab.com" data-slug="gitlab" data-name="GitLab" alt="GitLab logo" title="GitLab logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Bitbucket">
-            <img class="logo-img" src="https://logo.clearbit.com/bitbucket.org" data-domain="bitbucket.org" data-slug="bitbucket" data-name="Bitbucket" alt="Bitbucket logo" title="Bitbucket logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Atlassian">
-            <img class="logo-img" src="https://logo.clearbit.com/atlassian.com" data-domain="atlassian.com" data-slug="atlassian" data-name="Atlassian" alt="Atlassian logo" title="Atlassian logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Jira">
-            <img class="logo-img" src="https://logo.clearbit.com/jira.com" data-domain="jira.com" data-slug="jira" data-name="Jira" alt="Jira logo" title="Jira logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Confluence">
-            <img class="logo-img" src="https://logo.clearbit.com/confluence.atlassian.com" data-domain="confluence.atlassian.com" data-slug="confluence" data-name="Confluence" alt="Confluence logo" title="Confluence logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Asana">
-            <img class="logo-img" src="https://logo.clearbit.com/asana.com" data-domain="asana.com" data-slug="asana" data-name="Asana" alt="Asana logo" title="Asana logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Trello">
-            <img class="logo-img" src="https://logo.clearbit.com/trello.com" data-domain="trello.com" data-slug="trello" data-name="Trello" alt="Trello logo" title="Trello logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Airtable">
-            <img class="logo-img" src="https://logo.clearbit.com/airtable.com" data-domain="airtable.com" data-slug="airtable" data-name="Airtable" alt="Airtable logo" title="Airtable logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="monday.com">
-            <img class="logo-img" src="https://logo.clearbit.com/monday.com" data-domain="monday.com" data-slug="mondaydotcom" data-name="monday.com" alt="monday.com logo" title="monday.com logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Okta">
-            <img class="logo-img" src="https://logo.clearbit.com/okta.com" data-domain="okta.com" data-slug="okta" data-name="Okta" alt="Okta logo" title="Okta logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Zapier">
-            <img class="logo-img" src="https://logo.clearbit.com/zapier.com" data-domain="zapier.com" data-slug="zapier" data-name="Zapier" alt="Zapier logo" title="Zapier logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Twilio">
-            <img class="logo-img" src="https://logo.clearbit.com/twilio.com" data-domain="twilio.com" data-slug="twilio" data-name="Twilio" alt="Twilio logo" title="Twilio logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Mailchimp">
-            <img class="logo-img" src="https://logo.clearbit.com/mailchimp.com" data-domain="mailchimp.com" data-slug="mailchimp" data-name="Mailchimp" alt="Mailchimp logo" title="Mailchimp logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="PayPal">
-            <img class="logo-img" src="https://logo.clearbit.com/paypal.com" data-domain="paypal.com" data-slug="paypal" data-name="PayPal" alt="PayPal logo" title="PayPal logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Snowflake">
-            <img class="logo-img" src="https://logo.clearbit.com/snowflake.com" data-domain="snowflake.com" data-slug="snowflake" data-name="Snowflake" alt="Snowflake logo" title="Snowflake logo" loading="lazy" />
-          </span>
-          <span class="logo-chip" data-name="Datadog">
-            <img class="logo-img" src="https://logo.clearbit.com/datadoghq.com" data-domain="datadoghq.com" data-slug="datadog" data-name="Datadog" alt="Datadog logo" title="Datadog logo" loading="lazy" />
-          </span>
+      <section class="engine-section">
+        <div class="engine-copy reveal">
+          <p class="eyebrow">The Kryon engine</p>
+          <h2>Built for businesses<br /><em>that move fast.</em></h2>
+          <p class="lead">
+            Not a toy. Not a demo. A production-ready AI platform that connects to your
+            tools, runs your workflows, and deploys agents that get real work done.
+          </p>
         </div>
-      </section>
 
-      <section class="section trust-strip reveal">
-        <div class="container trust-strip-inner">
-          <div class="trust-strip-copy">
-            <p class="eyebrow">Enterprise proof</p>
-            <h2>Automation you can put in front of customers.</h2>
-            <p class="lead">
-              Kryon is engineered for high-stakes support: governed AI,
-              human-in-the-loop controls, and a compliance posture that scales.
-            </p>
-            <div class="trust-badges">
-              <span>Security-first architecture</span>
-              <span>Policy governance</span>
-              <span>Enterprise-scale SLAs</span>
-            </div>
-          </div>
-          <div class="trust-strip-stats">
-            <div class="stat-pill">
-              <span class="stat-value">99.98%</span>
-              <span class="stat-label">workflow uptime</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-value">45%</span>
-              <span class="stat-label">avg deflection lift</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-value">90 days</span>
-              <span class="stat-label">median time to ROI</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section system-section reveal">
-        <div class="container system-grid">
-          <div class="system-copy">
-            <p class="eyebrow">Everything works together</p>
-            <h2>A single operating layer for AI, humans, and workflows.</h2>
-            <p class="lead">
-              Kryon connects every channel, system, and policy into one
-              orchestration layer so responses stay accurate and fast.
-            </p>
-            <div class="system-list">
-              <div class="system-item">
-                <h4>Unified context</h4>
-                <p>Bring CRM, helpdesk, and data sources into one view.</p>
+        <div class="engine-visual reveal">
+          <div class="engine-glow"></div>
+          <div class="console-shell">
+            <div class="console-topbar">
+              <div>
+                <p class="console-label">Workflow dashboard</p>
+                <h3>Live automation across your business</h3>
               </div>
-              <div class="system-item">
-                <h4>Policy-first automation</h4>
-                <p>Every agent action respects approvals, limits, and audit trails.</p>
+              <div class="console-status">
+                <span class="status-dot"></span>
+                312 workflows running
               </div>
-              <div class="system-item">
-                <h4>Continuous learning</h4>
-                <p>Accepted resolutions feed the system and raise accuracy over time.</p>
+            </div>
+
+            <div class="console-grid">
+              <div class="console-card incident-card">
+                <div class="console-card-head">
+                  <span>New workflow triggered</span>
+                  <span>Lead onboarding</span>
+                </div>
+                <div class="thread-stack">
+                  <div class="thread-bubble customer">
+                    New lead signed up via website form — industry: eCommerce, size: 50–200.
+                  </div>
+                  <div class="thread-bubble system">
+                    Kryon pulled CRM data, enriched the record, and matched to a playbook.
+                  </div>
+                  <div class="thread-bubble ai">
+                    Confidence: 98.1%. Sending welcome sequence, assigning rep, creating task.
+                  </div>
+                </div>
+                <div class="intent-row">
+                  <span>Type: Lead nurture</span>
+                  <span>Priority: High</span>
+                  <span>Playbook: SMB-A</span>
+                </div>
+              </div>
+
+              <div class="console-card command-card">
+                <div class="console-card-head">
+                  <span>Agent task graph</span>
+                  <span>Elapsed 06.4s</span>
+                </div>
+                <div class="command-steps">
+                  <div class="command-step done">
+                    <span class="step-dot"></span>
+                    Enrich lead and score against ICP criteria
+                  </div>
+                  <div class="command-step done">
+                    <span class="step-dot"></span>
+                    Assign to sales rep and create CRM opportunity
+                  </div>
+                  <div class="command-step live">
+                    <span class="step-dot"></span>
+                    Send personalised welcome email and Slack alert
+                  </div>
+                </div>
+              </div>
+
+              <div class="console-side">
+                <div class="console-card mini-card">
+                  <p class="mini-label">Automation rate</p>
+                  <div class="meter">
+                    <span style="--meter: 87%"></span>
+                  </div>
+                  <div class="mini-meta">
+                    <strong>87%</strong>
+                    <span>Tasks completed without manual effort</span>
+                  </div>
+                </div>
+
+                <div class="console-card mini-card">
+                  <p class="mini-label">Workflow breakdown</p>
+                  <div class="approval-stack">
+                    <div>
+                      <span>Fully automated</span>
+                      <strong>71%</strong>
+                    </div>
+                    <div>
+                      <span>Agent-assisted</span>
+                      <strong>18%</strong>
+                    </div>
+                    <div>
+                      <span>Human review</span>
+                      <strong>11%</strong>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="system-visual">
-            <div class="ui-frame">
-              <img src="1.jpeg" alt="Kryon control system interface" />
+
+          <div class="engine-stats">
+            <div class="estat reveal reveal-d1">
+              <span class="estat-num" data-target="99.98" data-decimals="2">0</span><span class="estat-unit">%</span>
+              <p>Platform uptime</p>
             </div>
-            <div class="system-tags">
-              <span>Policy engine</span>
-              <span>Knowledge graph</span>
-              <span>Action layer</span>
-              <span>Analytics</span>
+            <div class="estat reveal reveal-d2">
+              <span class="estat-num" data-target="10" data-decimals="0">0</span><span class="estat-unit"> min</span>
+              <p>Avg. setup time</p>
+            </div>
+            <div class="estat reveal reveal-d3">
+              <span class="estat-num" data-target="3.2" data-decimals="1">0</span><span class="estat-unit">x</span>
+              <p>Faster operations</p>
+            </div>
+            <div class="estat reveal reveal-d4">
+              <span class="estat-num" data-target="60" data-decimals="0">0</span><span class="estat-unit"> days</span>
+              <p>Median ROI</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section pillars-section reveal">
+      <section id="walkthrough" class="walkthrough-section">
         <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Product pillars</p>
-            <h2>Two layers. One coherent system.</h2>
+          <div class="section-header reveal">
+            <p class="eyebrow">How it works</p>
+            <h2>Up and running<br />in minutes.</h2>
             <p class="lead">
-              Kryon balances autonomous resolution with a human command center,
-              keeping the experience premium for both customers and teams.
+              Four simple steps from sign-up to live AI workflows — no engineers, no
+              lengthy onboarding, no headaches.
             </p>
           </div>
-          <div class="pillars-grid">
-            <article class="pillar-card">
-              <span class="pillar-kicker">Autonomous resolution</span>
-              <h3>AI agents that take action, not just answers.</h3>
-              <p>
-                Execute refunds, update orders, and route issues instantly with
-                governed workflows that meet your policies.
-              </p>
-              <ul class="pillar-list">
-                <li>Actionable reasoning with guardrails</li>
-                <li>Confidence scoring and escalation logic</li>
-                <li>Multi-step workflows across tools</li>
-              </ul>
-              <button class="btn-elite-outline">See agent flow</button>
-            </article>
-            <article class="pillar-card pillar-card-alt">
-              <span class="pillar-kicker">Human command center</span>
-              <h3>Operators stay in control of every edge case.</h3>
-              <p>
-                Give teams full visibility, real-time context, and fast approvals
-                so sensitive cases stay precise and compliant.
-              </p>
-              <ul class="pillar-list">
-                <li>Shared inbox with live AI assistance</li>
-                <li>One-click approvals and audit trails</li>
-                <li>Custom playbooks per queue</li>
-              </ul>
-              <button class="btn-elite">Explore the console</button>
-            </article>
+
+          <div class="steps-layout reveal">
+            <div class="steps-nav" role="tablist" aria-label="Kryon process steps">
+              <button
+                class="step-btn active"
+                id="tab-0"
+                data-step="0"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-0"
+                tabindex="0"
+              >
+                <span class="step-num">01</span>
+                <div class="step-text">
+                  <h4>Connect</h4>
+                  <p>Link your existing tools in one click — CRM, email, Slack, and more.</p>
+                </div>
+                <div class="step-bar"><div class="step-progress"></div></div>
+              </button>
+              <button
+                class="step-btn"
+                id="tab-1"
+                data-step="1"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-1"
+                tabindex="-1"
+              >
+                <span class="step-num">02</span>
+                <div class="step-text">
+                  <h4>Configure</h4>
+                  <p>Pick a workflow template or describe what you need in plain English.</p>
+                </div>
+                <div class="step-bar"><div class="step-progress"></div></div>
+              </button>
+              <button
+                class="step-btn"
+                id="tab-2"
+                data-step="2"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-2"
+                tabindex="-1"
+              >
+                <span class="step-num">03</span>
+                <div class="step-text">
+                  <h4>Deploy</h4>
+                  <p>Launch your workflow or AI agent with one click — it starts working immediately.</p>
+                </div>
+                <div class="step-bar"><div class="step-progress"></div></div>
+              </button>
+              <button
+                class="step-btn"
+                id="tab-3"
+                data-step="3"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-3"
+                tabindex="-1"
+              >
+                <span class="step-num">04</span>
+                <div class="step-text">
+                  <h4>Scale</h4>
+                  <p>Monitor results, add more workflows, and let agents handle the complexity.</p>
+                </div>
+                <div class="step-bar"><div class="step-progress"></div></div>
+              </button>
+            </div>
+
+            <div class="steps-display">
+              <div class="step-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
+                <div class="step-stage">
+                  <div class="stage-card chat-card">
+                    <div class="stage-heading">
+                      <span>Integrations</span>
+                      <span>One-click connect</span>
+                    </div>
+                    <div class="stage-chat">
+                      <div class="stage-msg inbound">
+                        "Connect my HubSpot, Slack, and Gmail accounts."
+                      </div>
+                      <div class="stage-msg neutral">
+                        Kryon authenticates each tool and maps your data in the background.
+                      </div>
+                      <div class="stage-msg outbound">
+                        3 integrations live. Your stack is ready to automate.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stage-card insights-card">
+                    <div class="stage-heading">
+                      <span>Connected tools</span>
+                      <span>Ready</span>
+                    </div>
+                    <div class="signal-grid">
+                      <span>HubSpot CRM</span>
+                      <span>Gmail inbox</span>
+                      <span>Slack workspace</span>
+                      <span>Google Drive</span>
+                      <span>Stripe payments</span>
+                      <span>Notion workspace</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
+                <div class="step-stage">
+                  <div class="stage-card matrix-card">
+                    <div class="stage-heading">
+                      <span>Workflow builder</span>
+                      <span>Template selected</span>
+                    </div>
+                    <div class="matrix-list">
+                      <div><span>Lead follow-up sequence</span><strong>Selected</strong></div>
+                      <div><span>Trigger: new CRM contact</span><strong>Set</strong></div>
+                      <div><span>Action: send email + Slack alert</span><strong>Configured</strong></div>
+                      <div><span>Fallback: assign to rep</span><strong>Ready</strong></div>
+                    </div>
+                  </div>
+                  <div class="stage-card confidence-card">
+                    <div class="stage-heading">
+                      <span>Setup complete</span>
+                      <span>100%</span>
+                    </div>
+                    <div class="confidence-ring">
+                      <div class="ring-center">
+                        <strong>100%</strong>
+                        <span>ready to deploy</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+                <div class="step-stage">
+                  <div class="stage-card workflow-card">
+                    <div class="stage-heading">
+                      <span>Deployment log</span>
+                      <span>6.4 seconds</span>
+                    </div>
+                    <div class="workflow-list">
+                      <div><strong>01</strong><span>Workflow published and active</span></div>
+                      <div><strong>02</strong><span>AI agent assigned and briefed</span></div>
+                      <div><strong>03</strong><span>First trigger fired successfully</span></div>
+                      <div><strong>04</strong><span>Results logged to dashboard</span></div>
+                    </div>
+                  </div>
+                  <div class="stage-card actions-card">
+                    <div class="stage-heading">
+                      <span>Outputs</span>
+                      <span>4 systems updated</span>
+                    </div>
+                    <div class="action-pills">
+                      <span>Welcome email sent</span>
+                      <span>CRM record updated</span>
+                      <span>Slack alert fired</span>
+                      <span>Task created</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+                <div class="step-stage">
+                  <div class="stage-card learn-card">
+                    <div class="stage-heading">
+                      <span>Performance overview</span>
+                      <span>Updated live</span>
+                    </div>
+                    <div class="learn-metrics">
+                      <div>
+                        <span>Tasks automated</span>
+                        <strong>+340</strong>
+                      </div>
+                      <div>
+                        <span>Hours saved this week</span>
+                        <strong>28 hrs</strong>
+                      </div>
+                      <div>
+                        <span>Manual effort reduction</span>
+                        <strong>-74%</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stage-card trend-card">
+                    <div class="stage-heading">
+                      <span>Automation growth</span>
+                      <span>Last 30 days</span>
+                    </div>
+                    <div class="trend-bars" aria-hidden="true">
+                      <span style="--bar: 44%"></span>
+                      <span style="--bar: 59%"></span>
+                      <span style="--bar: 68%"></span>
+                      <span style="--bar: 78%"></span>
+                      <span style="--bar: 91%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="capabilities" class="section capabilities-section reveal">
-        <div class="container capabilities-grid">
-          <div class="capabilities-copy">
+      <section id="capabilities" class="features-section">
+        <div class="container">
+          <div class="section-header reveal">
             <p class="eyebrow">Capabilities</p>
-            <h2>Built for governed, enterprise-grade automation.</h2>
+            <h2>Everything you need<br />to automate your business.</h2>
             <p class="lead">
-              Every capability in Kryon is designed for scale: policy control,
-              data security, and operational visibility across every channel.
+              Powerful enough for complex multi-step processes, simple enough to set up
+              in under ten minutes.
             </p>
-            <button class="btn-elite">Explore capabilities</button>
           </div>
-          <div class="capability-stack">
-            <div class="capability-group">
-              <h4>Reasoning + policy</h4>
-              <p>Governed decisioning that adapts to your rules and risk model.</p>
-              <ul>
-                <li>Policy constraints per action</li>
-                <li>Dynamic confidence thresholds</li>
-                <li>Human approval routing</li>
-              </ul>
-            </div>
-            <div class="capability-group">
-              <h4>Orchestration + actions</h4>
-              <p>Execute real workflows across the tools your teams rely on.</p>
-              <ul>
-                <li>CRM, billing, and helpdesk actions</li>
-                <li>Multi-channel routing and escalation</li>
-                <li>Workflow versioning with rollback</li>
-              </ul>
-            </div>
-            <div class="capability-group">
-              <h4>Operations + analytics</h4>
-              <p>Full visibility into every resolution, outcome, and signal.</p>
-              <ul>
-                <li>Audit trails and decision logs</li>
-                <li>Live QA and quality scoring</li>
-                <li>Performance insights by queue</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section showcase-section reveal">
-        <div class="container showcase-grid">
-          <div class="showcase-media">
-            <div class="ui-frame ui-frame-wide">
-              <img src="3.png" alt="Kryon operations dashboard" />
-            </div>
-          </div>
-          <div class="showcase-copy">
-            <p class="eyebrow">Product showcase</p>
-            <h2>One view of every conversation, action, and outcome.</h2>
-            <p class="lead">
-              Real-time visibility across AI decisions, human approvals, and
-              operational metrics — so leaders stay ahead of every trend.
-            </p>
-            <div class="showcase-list">
-              <div class="showcase-row">
-                <span class="dot"></span>
-                <div>
-                  <h4>Live orchestration</h4>
-                  <p>Track agent actions, handoffs, and retries as they happen.</p>
-                </div>
+          <div class="features-bento reveal">
+            <div class="feat feat-wide">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               </div>
-              <div class="showcase-row">
-                <span class="dot"></span>
-                <div>
-                  <h4>Intent-level reporting</h4>
-                  <p>See root causes, deflection wins, and risk signals by topic.</p>
-                </div>
-              </div>
-              <div class="showcase-row">
-                <span class="dot"></span>
-                <div>
-                  <h4>Quality oversight</h4>
-                  <p>Review every AI response with explainability built in.</p>
-                </div>
-              </div>
-            </div>
-            <div class="showcase-actions">
-              <button class="btn-elite">Request a walkthrough</button>
-              <button class="btn-elite-outline">View sample reports</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="outcomes" class="section outcomes-section reveal">
-        <div class="container outcomes-grid">
-          <div class="outcomes-copy">
-            <p class="eyebrow">Outcomes</p>
-            <h2>Compounding performance, measured in weeks.</h2>
-            <p class="lead">
-              Kryon reduces resolution time while improving quality — delivering
-              customer experiences that feel instant and precise.
-            </p>
-            <div class="outcome-actions">
-              <button class="btn-elite">See impact model</button>
-              <button class="btn-elite-outline">Talk to specialists</button>
-            </div>
-          </div>
-          <div class="outcomes-panels">
-            <div class="outcome-panel">
-              <h3>2.6x faster</h3>
-              <p>Average resolution speed in complex queues.</p>
-            </div>
-            <div class="outcome-panel">
-              <h3>35% lower cost</h3>
-              <p>Support cost per ticket after 90 days.</p>
-            </div>
-            <div class="outcome-panel">
-              <h3>+18 CSAT</h3>
-              <p>Lift in customer satisfaction scores.</p>
-            </div>
-          </div>
-        </div>
-        <div class="container outcomes-visual">
-          <div class="ui-frame">
-            <img src="2.jpeg" alt="Kryon performance analysis" />
-          </div>
-        </div>
-      </section>
-
-      <section id="trust" class="section proof-section reveal">
-        <div class="container proof-grid">
-          <div class="proof-case">
-            <p class="eyebrow">Proof & governance</p>
-            <h2>Designed for teams who can’t afford AI mistakes.</h2>
-            <p class="lead">
-              Kryon keeps humans in control with auditability, approval flows,
-              and a transparent chain of reasoning for every decision.
-            </p>
-            <div class="case-card">
-              <div class="case-metric">
-                <span class="metric-value">120+</span>
-                <span class="metric-label">enterprise pilots delivered</span>
-              </div>
-              <div class="case-metric">
-                <span class="metric-value">4.9/5</span>
-                <span class="metric-label">agent satisfaction score</span>
-              </div>
-              <div class="case-metric">
-                <span class="metric-value">24/7</span>
-                <span class="metric-label">global coverage achieved</span>
-              </div>
-            </div>
-          </div>
-          <div class="proof-testimonial">
-            <div class="testimonial-card">
+              <h3>AI agents for complex work</h3>
               <p>
-                “Kryon gives us the confidence to automate the hard cases. We
-                can see every decision, approve critical actions, and scale
-                without sacrificing our brand tone.”
+                When a workflow isn't enough, deploy an AI agent. Agents can research,
+                decide, act across multiple tools, and handle multi-step tasks end-to-end
+                — without a human in the loop.
               </p>
-              <span>Head of Customer Operations, Enterprise SaaS</span>
+              <span class="feat-pill">Core product</span>
             </div>
-            <div class="compliance-grid">
-              <div>
-                <h4>SOC 2 Type II</h4>
-                <p>Audited security and availability controls.</p>
+
+            <div class="feat">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
               </div>
-              <div>
-                <h4>GDPR-ready</h4>
-                <p>Regional data controls and consent-aware routing.</p>
+              <h3>No-code setup</h3>
+              <p>
+                Build and launch workflows with templates or plain-English instructions.
+                No developers, no technical knowledge required.
+              </p>
+            </div>
+
+            <div class="feat">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
               </div>
-              <div>
-                <h4>Role-based access</h4>
-                <p>Granular permissions and approval tiers.</p>
+              <h3>100+ integrations</h3>
+              <p>
+                Native connections to HubSpot, Slack, Stripe, Gmail, Notion, and the tools
+                your team already uses — up and running in one click.
+              </p>
+            </div>
+
+            <div class="feat feat-wide feat-alt">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
-              <div>
-                <h4>Encrypted by default</h4>
-                <p>Data in transit and at rest, always.</p>
+              <h3>Managed workflows</h3>
+              <p>
+                Kryon doesn't just sell you software — we manage your AI workflows too.
+                Our team monitors, optimises, and improves your automations so you can
+                focus on running your business.
+              </p>
+              <span class="feat-pill feat-pill-alt">Most loved</span>
+            </div>
+
+            <div class="feat">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <h3>Live analytics</h3>
+              <p>
+                See exactly what your workflows and agents are doing, how much time
+                they're saving, and where to automate next.
+              </p>
+            </div>
+
+            <div class="feat">
+              <div class="feat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+              </div>
+              <h3>Scales with you</h3>
+              <p>
+                Start with one workflow and grow to hundreds. Add agents as tasks get
+                more complex — the platform grows with your business.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="orch-section">
+        <div class="container">
+          <div class="orch-layout">
+            <div class="orch-copy reveal">
+              <p class="eyebrow">AI agents</p>
+              <h2>Agents that handle<br />the hard stuff.</h2>
+              <p class="lead">
+                Some tasks are too complex for a simple workflow. Kryon's AI agents
+                work across your tools, make decisions, and complete multi-step jobs
+                autonomously — like a tireless employee who never sleeps.
+              </p>
+              <ul class="orch-list">
+                <li>
+                  <span class="orch-dot"></span>
+                  <div>
+                    <strong>Multi-step reasoning</strong>
+                    <p>Agents break down complex tasks and execute them step by step across tools.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="orch-dot"></span>
+                  <div>
+                    <strong>Full audit trail</strong>
+                    <p>Every action an agent takes is logged so you always know what happened and why.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="orch-dot"></span>
+                  <div>
+                    <strong>Human handoff</strong>
+                    <p>Agents know when to escalate — and hand off to your team with full context.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="orch-visual reveal" aria-hidden="true">
+              <div class="orch-glow"></div>
+              <div class="orch-board">
+                <div class="orch-board-top">
+                  <p>Agent orchestration map</p>
+                  <span>42 automations active</span>
+                </div>
+                <div class="orch-network">
+                  <div class="orch-node center">Kryon</div>
+                  <div class="orch-node node-a">HubSpot</div>
+                  <div class="orch-node node-b">Stripe</div>
+                  <div class="orch-node node-c">Gmail</div>
+                  <div class="orch-node node-d">Slack</div>
+                  <div class="orch-node node-e">Notion</div>
+                  <div class="orch-line line-a"></div>
+                  <div class="orch-line line-b"></div>
+                  <div class="orch-line line-c"></div>
+                  <div class="orch-line line-d"></div>
+                  <div class="orch-line line-e"></div>
+                </div>
+                <div class="orch-feed">
+                  <div><span>Lead nurture sequence</span><strong>Completed</strong></div>
+                  <div><span>Invoice chased &amp; paid</span><strong>Done</strong></div>
+                  <div><span>Onboarding agent</span><strong>Live</strong></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section cta-bridge reveal">
-        <div class="container cta-bridge-panel">
-          <div>
-            <p class="eyebrow">Ready to scale?</p>
-            <h2>Turn your support org into an AI advantage.</h2>
-            <p>
-              Deploy Kryon in weeks, automate complex workflows, and keep humans
-              in control as you scale.
-            </p>
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-header centered reveal">
+            <p class="eyebrow">Social proof</p>
+            <h2>Businesses running smarter<br />with Kryon.</h2>
           </div>
+
+          <div class="tgrid reveal">
+            <div class="tcard">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>
+                "We were up and running in under 20 minutes. Kryon connected to our CRM,
+                set up a lead nurture workflow, and it just worked. I couldn’t believe
+                how easy it was."
+              </blockquote>
+              <div class="tcard-metric">First workflow live in 18 minutes</div>
+              <footer class="tcard-author">
+                <span class="tauthor-name">Head of Operations</span>
+                <span class="tauthor-co">Growth-stage SaaS</span>
+              </footer>
+            </div>
+
+            <div class="tcard tcard-featured">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>
+                "The AI agents are genuinely impressive. We gave one a complex onboarding
+                task that used to take our team hours — it handled it start to finish in
+                minutes, across five different tools."
+              </blockquote>
+              <div class="tcard-metric">74% reduction in manual ops work</div>
+              <footer class="tcard-author">
+                <span class="tauthor-name">Co-founder &amp; CEO</span>
+                <span class="tauthor-co">eCommerce Scale-up</span>
+              </footer>
+            </div>
+
+            <div class="tcard">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>
+                "We evaluated five automation platforms. Kryon was the only one our
+                non-technical team could actually use. Setup was straightforward and
+                the managed service takes care of the rest."
+              </blockquote>
+              <div class="tcard-metric">12 workflows running within the first week</div>
+              <footer class="tcard-author">
+                <span class="tauthor-name">Operations Manager</span>
+                <span class="tauthor-co">Professional Services Firm</span>
+              </footer>
+            </div>
+          </div>
+
+          <div class="proof-bar reveal">
+            <div class="pstat">
+              <span>200+</span>
+              <p>Businesses automated</p>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="pstat">
+              <span>4.9 / 5</span>
+              <p>Customer satisfaction score</p>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="pstat">
+              <span>&lt; 10 min</span>
+              <p>Average setup time</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" class="trust-section">
+        <div class="container">
+          <div class="trust-layout reveal">
+            <div class="trust-copy">
+              <p class="eyebrow">Security &amp; compliance</p>
+              <h2>Your data is safe<br />with Kryon.</h2>
+              <p class="lead">
+                SOC 2 Type II audited, GDPR-ready, encrypted by default. We take security
+                seriously so you can automate with confidence.
+              </p>
+              <div class="compliance-grid">
+                <div class="comp-item">
+                  <div class="comp-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  </div>
+                  <div>
+                    <h5>SOC 2 Type II</h5>
+                    <p>Audited security and availability controls</p>
+                  </div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  </div>
+                  <div>
+                    <h5>Encrypted by default</h5>
+                    <p>Data in transit and at rest, always</p>
+                  </div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                  </div>
+                  <div>
+                    <h5>GDPR-ready</h5>
+                    <p>Regional data controls and consent routing</p>
+                  </div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                  </div>
+                  <div>
+                    <h5>Role-based access</h5>
+                    <p>Granular permissions, queues, and approval tiers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trust-visual" aria-hidden="true">
+              <div class="orbit-system">
+                <div class="orbit orbit-3"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-1"></div>
+                <div class="orbit-core">
+                  <img src="media/images/logo.png" alt="Kryon" />
+                </div>
+                <div class="orbit-dot dot-1"></div>
+                <div class="orbit-dot dot-2"></div>
+                <div class="orbit-dot dot-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="outcomes" class="cta-section">
+        <div class="cta-ambient"></div>
+        <div class="container reveal">
+          <p class="eyebrow">Ready to automate?</p>
+          <h2>Your first workflow<br /><em>in under 10 minutes.</em></h2>
+          <p class="cta-sub">
+            Connect your tools, pick a template, and let Kryon do the work. No setup fees,
+            no engineers, no excuses.
+          </p>
           <div class="cta-actions">
-            <button class="btn-elite">Book a demo</button>
-            <button class="btn-elite-outline">Talk to sales</button>
+            <a class="btn-primary-lg" href="#contact">Get started free</a>
+            <a class="btn-ghost-lg" href="#contact">Talk to us</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer-brand">
-        <div class="brand">
-          <img class="brand-logo" src="logo.png" data-name="Kryon" alt="Kryon logo" />
-          <span class="brand-name">Kryon</span>
+    <footer class="footer" id="contact">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Kryon home">
+            <img class="brand-logo" src="media/images/logo.png" alt="Kryon logo" />
+            <span class="brand-name">Kryon</span>
+          </a>
+          <p>The easiest way to build, deploy, and manage AI workflows and agents for your business.</p>
         </div>
-        <p>
-          The enterprise AI operations layer for customer service and complex
-          workflows.
-        </p>
+        <div class="footer-columns">
+          <div>
+            <h5>Product</h5>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#outcomes">Outcomes</a>
+            <a href="#integrations">Integrations</a>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <a href="#trust">Security</a>
+            <a href="#walkthrough">How it works</a>
+            <a href="#contact">Careers</a>
+          </div>
+          <div>
+            <h5>Get in touch</h5>
+            <a href="#outcomes">Book a demo</a>
+            <a href="#contact">Support</a>
+            <a href="#contact">Press</a>
+          </div>
+        </div>
       </div>
-      <div class="footer-columns">
-        <div>
-          <h5>Product</h5>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#outcomes">Outcomes</a>
-          <a href="#integrations">Integrations</a>
-        </div>
-        <div>
-          <h5>Company</h5>
-          <a href="#">About</a>
-          <a href="#">Security</a>
-          <a href="#">Careers</a>
-        </div>
-        <div>
-          <h5>Get in touch</h5>
-          <a href="#">Contact sales</a>
-          <a href="#">Support</a>
-          <a href="#">Press</a>
-        </div>
+      <div class="container footer-bottom">
+        <p>© 2026 Kryon. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#contact">Privacy</a>
+          <a href="#contact">Terms</a>
+          <a href="#trust">Security</a>
+        </nav>
       </div>
     </footer>
 
     <script src="script.js"></script>
   </body>
 </html>
-
