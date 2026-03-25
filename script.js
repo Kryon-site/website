@@ -181,9 +181,12 @@ if (walkthroughEl && stepBtns.length) {
   function applyCanvasSize() {
     if (!nativeW) return;
     const center = document.querySelector('.scrub-center');
-    // Use the center column's actual dimensions; fall back to full viewport
-    const maxW = center ? center.clientWidth  - 8  : window.innerWidth;
-    const maxH = center ? center.clientHeight - 16 : window.innerHeight * 0.9;
+    const cw = center ? center.clientWidth  - 8  : window.innerWidth;
+    const ch = center ? center.clientHeight - 16 : window.innerHeight;
+    // Hard-cap: canvas occupies at most 42vw × 58vh so it reads as
+    // "framed content" with the info panels clearly dominant beside it.
+    const maxW = Math.min(cw, window.innerWidth  * 0.42);
+    const maxH = Math.min(ch, window.innerHeight * 0.58);
     const scale = Math.min(maxW / nativeW, maxH / nativeH);
     canvas.style.width  = Math.round(nativeW * scale) + 'px';
     canvas.style.height = Math.round(nativeH * scale) + 'px';
@@ -192,11 +195,21 @@ if (walkthroughEl && stepBtns.length) {
   // ── Phase switching ───────────────────────────────────────────────────
   // Swaps the active phase class at the 45% progress mark.
   // Phase 0 = problem (workflows), Phase 1 = solution (agents).
+  const scrubSticky = document.querySelector('.scrub-sticky');
+  let currentPhase  = -1; // force first call to always apply
+
   function updatePhase(progress) {
     const phase = progress >= 0.45 ? 1 : 0;
+    if (phase === currentPhase) return;   // skip redundant DOM writes
+    currentPhase = phase;
+
     document.querySelectorAll('.scrub-phase').forEach(el => {
       el.classList.toggle('active', Number(el.dataset.phase) === phase);
     });
+
+    // Toggle a class on the sticky container so CSS can restyle panels
+    // globally on phase change (border accent, background tint, etc.)
+    if (scrubSticky) scrubSticky.classList.toggle('is-phase-agents', phase === 1);
   }
 
   function initCanvas(img) {
