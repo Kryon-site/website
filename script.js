@@ -152,6 +152,142 @@ if (walkthroughEl && stepBtns.length) {
   autoObserver.observe(walkthroughEl);
 }
 
+/* ─── Scroll-scrubbed frame animation ───────────────────────────────── */
+(function () {
+  const FRAME_COUNT = 151;          // extracted frame count (24fps × 6.29s)
+  const FRAME_DIR   = 'media/frames/hand/';
+  const FRAME_EXT   = '.jpg';
+
+  const section = document.getElementById('scrubSection');
+  const canvas  = document.getElementById('scrubCanvas');
+  if (!section || !canvas) return;
+
+  const ctx = canvas.getContext('2d', { alpha: false });
+
+  // Loaded HTMLImageElement per frame index (null = not yet loaded)
+  const frames = new Array(FRAME_COUNT).fill(null);
+
+  let pendingIndex  = 0;   // frame to draw on next RAF
+  let renderedIndex = -1;  // last frame actually drawn
+  let rafId         = null;
+
+  // ── Sizing ───────────────────────────────────────────────────────────
+  // After the first frame loads we know the video's intrinsic dimensions.
+  // We set the canvas draw buffer to native size and CSS size to fit the
+  // viewport, preserving aspect ratio on every window resize.
+  let nativeW = 0;
+  let nativeH = 0;
+
+  function applyCanvasSize() {
+    if (!nativeW) return;
+    const center = document.querySelector('.scrub-center');
+    // Use the center column's actual dimensions; fall back to full viewport
+    const maxW = center ? center.clientWidth  - 8  : window.innerWidth;
+    const maxH = center ? center.clientHeight - 16 : window.innerHeight * 0.9;
+    const scale = Math.min(maxW / nativeW, maxH / nativeH);
+    canvas.style.width  = Math.round(nativeW * scale) + 'px';
+    canvas.style.height = Math.round(nativeH * scale) + 'px';
+  }
+
+  // ── Phase switching ───────────────────────────────────────────────────
+  // Swaps the active phase class at the 45% progress mark.
+  // Phase 0 = problem (workflows), Phase 1 = solution (agents).
+  function updatePhase(progress) {
+    const phase = progress >= 0.45 ? 1 : 0;
+    document.querySelectorAll('.scrub-phase').forEach(el => {
+      el.classList.toggle('active', Number(el.dataset.phase) === phase);
+    });
+  }
+
+  function initCanvas(img) {
+    nativeW = img.naturalWidth;
+    nativeH = img.naturalHeight;
+    // Draw-buffer stays at native resolution for crisp rendering
+    canvas.width  = nativeW;
+    canvas.height = nativeH;
+    applyCanvasSize();
+  }
+
+  window.addEventListener('resize', applyCanvasSize, { passive: true });
+
+  // ── Frame loading ─────────────────────────────────────────────────────
+  function pad(i) {
+    // frames on disk are 1-indexed: frame_0001.jpg … frame_0151.jpg
+    return String(i + 1).padStart(4, '0');
+  }
+
+  function loadFrame(i) {
+    return new Promise(resolve => {
+      if (frames[i]) { resolve(frames[i]); return; }
+      const img = new Image();
+      img.onload  = () => { frames[i] = img; resolve(img); };
+      img.onerror = () => resolve(null);
+      img.src = `${FRAME_DIR}frame_${pad(i)}${FRAME_EXT}`;
+    });
+  }
+
+  async function preload() {
+    // 1. Load frame 0 immediately so we have something to show right away
+    const first = await loadFrame(0);
+    if (!first) return;
+
+    initCanvas(first);
+    drawImmediate(0);
+    canvas.classList.add('is-ready');
+    updatePhase(0);
+
+    // 2. Load remaining frames sequentially in the background.
+    //    Sequential (not parallel) keeps memory pressure low and lets
+    //    the browser continue rendering without competing for bandwidth.
+    for (let i = 1; i < FRAME_COUNT; i++) {
+      await loadFrame(i);
+    }
+  }
+
+  // ── Rendering ─────────────────────────────────────────────────────────
+  function drawImmediate(index) {
+    const img = frames[index];
+    if (!img) return;
+    ctx.drawImage(img, 0, 0, nativeW, nativeH);
+    renderedIndex = index;
+  }
+
+  function scheduleRender(index) {
+    pendingIndex = index;
+    if (rafId !== null) return;          // already scheduled, just update target
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      if (pendingIndex !== renderedIndex) {
+        drawImmediate(pendingIndex);
+      }
+    });
+  }
+
+  // ── Scroll mapping ────────────────────────────────────────────────────
+  function getTargetIndex() {
+    const { top } = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    // progress: 0 = animation start, 1 = animation end
+    const progress = Math.max(0, Math.min(1, -top / scrollable));
+    return Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+  }
+
+  function onScroll() {
+    if (!nativeW) return;               // first frame not yet loaded
+    const index = getTargetIndex();
+    scheduleRender(index);
+    updatePhase(index / (FRAME_COUNT - 1));
+  }
+
+  // ── Reduced-motion: just show first frame, no scrubbing ───────────────
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!prefersReduced.matches) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  preload();
+})();
+
 /* Header state */
 const header = document.querySelector('.site-header');
 
