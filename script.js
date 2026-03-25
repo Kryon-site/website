@@ -154,7 +154,7 @@ if (walkthroughEl && stepBtns.length) {
 
 /* ─── Scroll-scrubbed frame animation ───────────────────────────────── */
 (function () {
-  const FRAME_COUNT = 151;          // extracted frame count (24fps × 6.29s)
+  const FRAME_COUNT = 192;          // extracted frame count (24fps × 8s)
   const FRAME_DIR   = 'media/frames/hand/';
   const FRAME_EXT   = '.jpg';
 
@@ -180,13 +180,12 @@ if (walkthroughEl && stepBtns.length) {
 
   function applyCanvasSize() {
     if (!nativeW) return;
-    const center = document.querySelector('.scrub-center');
-    const cw = center ? center.clientWidth  - 8  : window.innerWidth;
-    const ch = center ? center.clientHeight - 16 : window.innerHeight;
-    // Hard-cap: canvas occupies at most 42vw × 58vh so it reads as
-    // "framed content" with the info panels clearly dominant beside it.
-    const maxW = Math.min(cw, window.innerWidth  * 0.42);
-    const maxH = Math.min(ch, window.innerHeight * 0.58);
+    const animSide = document.querySelector('.scrub-anim-side');
+    // Cap canvas within the right column: at most 46vw wide, 60vh tall
+    const maxW = animSide
+      ? Math.min(animSide.clientWidth  - 16, window.innerWidth  * 0.46)
+      : window.innerWidth * 0.46;
+    const maxH = window.innerHeight * 0.60;
     const scale = Math.min(maxW / nativeW, maxH / nativeH);
     canvas.style.width  = Math.round(nativeW * scale) + 'px';
     canvas.style.height = Math.round(nativeH * scale) + 'px';
@@ -207,9 +206,20 @@ if (walkthroughEl && stepBtns.length) {
       el.classList.toggle('active', Number(el.dataset.phase) === phase);
     });
 
-    // Toggle a class on the sticky container so CSS can restyle panels
-    // globally on phase change (border accent, background tint, etc.)
+    // Step labels in stepper
+    document.querySelectorAll('.scrub-step-label').forEach(el => {
+      el.classList.toggle('active', Number(el.dataset.step) === phase);
+    });
+
+    // Toggle a class on the sticky container so CSS can restyle globally
     if (scrubSticky) scrubSticky.classList.toggle('is-phase-agents', phase === 1);
+  }
+
+  function updateProgressBar(progress) {
+    const fill = document.getElementById('scrubStepFill');
+    if (!fill) return;
+    // Fill the bar across phase 0 (0 → 0.45), then hold at 100%
+    fill.style.width = Math.min(progress / 0.45, 1) * 100 + '%';
   }
 
   function initCanvas(img) {
@@ -248,6 +258,7 @@ if (walkthroughEl && stepBtns.length) {
     drawImmediate(0);
     canvas.classList.add('is-ready');
     updatePhase(0);
+    updateProgressBar(0);
 
     // 2. Load remaining frames sequentially in the background.
     //    Sequential (not parallel) keeps memory pressure low and lets
@@ -289,7 +300,9 @@ if (walkthroughEl && stepBtns.length) {
     if (!nativeW) return;               // first frame not yet loaded
     const index = getTargetIndex();
     scheduleRender(index);
-    updatePhase(index / (FRAME_COUNT - 1));
+    const progress = index / (FRAME_COUNT - 1);
+    updatePhase(progress);
+    updateProgressBar(progress);
   }
 
   // ── Reduced-motion: just show first frame, no scrubbing ───────────────

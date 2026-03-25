@@ -76,7 +76,7 @@
             </a>
           </div>
 
-          
+
 
         </div>
 
@@ -530,44 +530,69 @@
         <div class="scrub-sticky">
           <div class="scrub-vignette"></div>
 
-          <!-- Left: narrative -->
-          <div class="scrub-panel scrub-panel-left">
-            <div class="scrub-phase-wrap">
-              <div class="scrub-phase active" data-phase="0">
-                <p class="eyebrow">The challenge</p>
-                <h3 class="scrub-phase-title">Workflows reach their limit.</h3>
-                <p class="scrub-phase-body">Rules-based automation breaks the moment a task needs judgment, context, or adaptation.</p>
+          <!-- Left: info panel -->
+          <div class="scrub-info">
+
+            <!-- Step tracker -->
+            <div class="scrub-track">
+              <div class="scrub-track-step active" data-step="0">
+                <span class="scrub-track-num">01</span>
+                <div class="scrub-track-bar">
+                  <div class="scrub-step-fill" id="scrubStepFill"></div>
+                </div>
               </div>
-              <div class="scrub-phase" data-phase="1">
-                <p class="eyebrow">The answer</p>
-                <h3 class="scrub-phase-title">Agents take over.</h3>
-                <p class="scrub-phase-body">Kryon agents reason through complexity and complete tasks end-to-end — without human intervention.</p>
+              <div class="scrub-track-step" data-step="1">
+                <span class="scrub-track-num">02</span>
               </div>
             </div>
+
+            <!-- Phase content -->
+            <div class="scrub-content">
+              <div class="scrub-phase active" data-phase="0">
+                <p class="scrub-label">The problem</p>
+                <h3 class="scrub-heading">Rules-based<br />automation<br />breaks down.</h3>
+                <ul class="scrub-list scrub-list-neg">
+                  <li>
+                    <span class="scrub-icon scrub-icon-neg">✕</span>
+                    Can't handle judgment calls or exceptions
+                  </li>
+                  <li>
+                    <span class="scrub-icon scrub-icon-neg">✕</span>
+                    No reasoning or context across steps
+                  </li>
+                  <li>
+                    <span class="scrub-icon scrub-icon-neg">✕</span>
+                    Breaks constantly — needs manual fixes
+                  </li>
+                </ul>
+              </div>
+              <div class="scrub-phase" data-phase="1">
+                <p class="scrub-label">The solution</p>
+                <h3 class="scrub-heading">Agents handle<br />whatever comes<br /><em>next.</em></h3>
+                <ul class="scrub-list scrub-list-pos">
+                  <li>
+                    <span class="scrub-icon scrub-icon-pos">✓</span>
+                    Reasons through any task, any tool
+                  </li>
+                  <li>
+                    <span class="scrub-icon scrub-icon-pos">✓</span>
+                    Completes multi-step jobs end-to-end
+                  </li>
+                  <li>
+                    <span class="scrub-icon scrub-icon-pos">✓</span>
+                    Adapts — zero manual intervention
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Center: animation canvas -->
-          <div class="scrub-center">
+          <!-- Right: canvas -->
+          <div class="scrub-canvas-side">
             <canvas id="scrubCanvas" class="scrub-canvas"></canvas>
           </div>
 
-          <!-- Right: detail points -->
-          <div class="scrub-panel scrub-panel-right">
-            <div class="scrub-phase-wrap">
-              <div class="scrub-phase active" data-phase="0">
-                <div class="scrub-point scrub-point-neg">Fixed rules, no reasoning</div>
-                <div class="scrub-point scrub-point-neg">Breaks on edge cases</div>
-                <div class="scrub-point scrub-point-neg">Requires manual fixes</div>
-                <div class="scrub-point scrub-point-neg">No context across steps</div>
-              </div>
-              <div class="scrub-phase" data-phase="1">
-                <div class="scrub-point scrub-point-pos">Reasons through any task</div>
-                <div class="scrub-point scrub-point-pos">Adapts to any context</div>
-                <div class="scrub-point scrub-point-pos">Completes jobs end-to-end</div>
-                <div class="scrub-point scrub-point-pos">Works across your stack</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -619,6 +644,71 @@
                 <span class="alr-task">New user → onboarding sequence active</span>
                 <span class="alr-badge alr-badge-live">Running</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-header centered reveal">
+            <p class="eyebrow">Customer results</p>
+            <h2>Real teams.<br /><em>Real outcomes.</em></h2>
+          </div>
+
+          <div class="tgrid reveal">
+            <div class="tcard tcard-featured tcard-hero">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"A task that used to take our team hours — handled start to finish in minutes, across five different tools."</blockquote>
+              <div class="tcard-metric">74% reduction in manual ops work</div>
+              <footer class="tcard-author">
+                <div class="tauthor-avatar tauthor-avatar-teal">CF</div>
+                <div>
+                  <span class="tauthor-name">Co-founder &amp; CEO</span>
+                  <span class="tauthor-co">eCommerce Scale-up</span>
+                </div>
+              </footer>
+            </div>
+
+            <div class="tcard">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"Up and running in 20 minutes. It just worked."</blockquote>
+              <footer class="tcard-author">
+                <div class="tauthor-avatar">HO</div>
+                <div>
+                  <span class="tauthor-name">Head of Operations</span>
+                  <span class="tauthor-co">Growth-stage SaaS</span>
+                </div>
+              </footer>
+            </div>
+
+            <div class="tcard">
+              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote>"The only platform our non-technical team could actually use."</blockquote>
+              <footer class="tcard-author">
+                <div class="tauthor-avatar">OM</div>
+                <div>
+                  <span class="tauthor-name">Operations Manager</span>
+                  <span class="tauthor-co">Professional Services Firm</span>
+                </div>
+              </footer>
+            </div>
+          </div>
+
+          <div class="proof-bar reveal">
+            <div class="pstat">
+              <span>200+</span>
+              <p>Businesses automated</p>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="pstat">
+              <span>4.9 / 5</span>
+              <p>Satisfaction score</p>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="pstat">
+              <span>&lt; 10 min</span>
+              <p>Avg. setup time</p>
             </div>
           </div>
         </div>
