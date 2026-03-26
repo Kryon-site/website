@@ -17,6 +17,13 @@ reveals.forEach(el => revealObserver.observe(el));
 function animateCounter(el) {
   const target = Number.parseFloat(el.dataset.target);
   const decimals = Number.parseInt(el.dataset.decimals ?? '0', 10);
+
+  // Skip animation on mobile — prevents layout-flicker from rapid textContent changes
+  if (window.innerWidth <= 900) {
+    el.textContent = target.toFixed(decimals);
+    return;
+  }
+
   const duration = 1800;
   const start = performance.now();
 
@@ -714,4 +721,37 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
   );
 
   startObserver.observe(section);
+})();
+
+/* ── Mobile nav hamburger ────────────────────────────────────────────── */
+(function () {
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks  = document.getElementById('navLinks');
+  if (!hamburger || !navLinks) return;
+
+  function close() {
+    hamburger.classList.remove('is-open');
+    navLinks.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const opening = !hamburger.classList.contains('is-open');
+    if (opening) {
+      hamburger.classList.add('is-open');
+      navLinks.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    } else {
+      close();
+    }
+  });
+
+  navLinks.addEventListener('click', close);
+
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      close();
+    }
+  });
 })();
