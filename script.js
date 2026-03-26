@@ -419,3 +419,143 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
   });
 })();
+
+/* ── Second scroll-scrubbed frame animation (0326) ───────────────────── */
+(function () {
+  const FRAME_COUNT = 178;
+  const FRAME_DIR   = 'media/frames/0326/';
+  const FRAME_EXT   = '.jpg';
+
+  const section = document.getElementById('scrubSection2');
+  const canvas  = document.getElementById('scrubCanvas2');
+  if (!section || !canvas) return;
+
+  const ctx = canvas.getContext('2d', { alpha: false });
+  const frames = new Array(FRAME_COUNT).fill(null);
+
+  let pendingIndex  = 0;
+  let renderedIndex = -1;
+  let rafId         = null;
+  let nativeW = 0;
+  let nativeH = 0;
+
+  function applyCanvasSize() {
+    if (!nativeW) return;
+    const animSide = section.querySelector('.scrub-canvas-side');
+    const maxW = animSide
+      ? Math.min(animSide.clientWidth - 16, window.innerWidth * 0.46)
+      : window.innerWidth * 0.46;
+    const maxH = window.innerHeight * 0.82;
+    const scale = Math.min(maxW / nativeW, maxH / nativeH);
+    canvas.style.width  = Math.round(nativeW * scale) + 'px';
+    canvas.style.height = Math.round(nativeH * scale) + 'px';
+  }
+
+  const scrubSticky2 = section.querySelector('.scrub-sticky-2');
+  let currentPhase2  = -1;
+
+  function updatePhase2(progress) {
+    const phase = progress >= 0.45 ? 1 : 0;
+    if (phase === currentPhase2) return;
+    currentPhase2 = phase;
+
+    section.querySelectorAll('.scrub-phase').forEach(el => {
+      el.classList.toggle('active', Number(el.dataset.phase) === phase);
+    });
+
+    section.querySelectorAll('.scrub-track-step').forEach(el => {
+      el.classList.toggle('active', Number(el.dataset.step) === phase);
+    });
+
+    if (scrubSticky2) scrubSticky2.classList.toggle('is-phase-agents', phase === 1);
+  }
+
+  function updateProgressBar2(progress) {
+    const fill = document.getElementById('scrubStepFill2');
+    if (!fill) return;
+    fill.style.width = Math.min(progress / 0.45, 1) * 100 + '%';
+  }
+
+  function initCanvas(img) {
+    nativeW = img.naturalWidth;
+    nativeH = img.naturalHeight;
+    canvas.width  = nativeW;
+    canvas.height = nativeH;
+    applyCanvasSize();
+  }
+
+  window.addEventListener('resize', applyCanvasSize, { passive: true });
+
+  function pad(i) {
+    return String(i + 1).padStart(4, '0');
+  }
+
+  function loadFrame(i) {
+    return new Promise(resolve => {
+      if (frames[i]) { resolve(frames[i]); return; }
+      const img = new Image();
+      img.onload  = () => { frames[i] = img; resolve(img); };
+      img.onerror = () => resolve(null);
+      img.src = `${FRAME_DIR}frame_${pad(i)}${FRAME_EXT}`;
+    });
+  }
+
+  async function preload() {
+    const first = await loadFrame(0);
+    if (!first) return;
+    initCanvas(first);
+    drawImmediate(0);
+    canvas.classList.add('is-ready');
+    onScroll2();
+    for (let i = 1; i < FRAME_COUNT; i++) {
+      await loadFrame(i);
+    }
+  }
+
+  function drawImmediate(index) {
+    const img = frames[index];
+    if (!img) return;
+    ctx.drawImage(img, 0, 0, nativeW, nativeH);
+    renderedIndex = index;
+  }
+
+  function scheduleRender(index) {
+    pendingIndex = index;
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      if (pendingIndex !== renderedIndex) drawImmediate(pendingIndex);
+    });
+  }
+
+  function getTargetIndex() {
+    const { top } = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, -top / scrollable));
+    return Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+  }
+
+  function onScroll2() {
+    if (!nativeW) return;
+    // If section is entirely below the viewport, lock to phase 0
+    const topNow = section.getBoundingClientRect().top;
+    if (topNow > window.innerHeight) {
+      currentPhase2 = -1;
+      updatePhase2(0);
+      updateProgressBar2(0);
+      return;
+    }
+    const index = getTargetIndex();
+    scheduleRender(index);
+    const progress = index / (FRAME_COUNT - 1);
+    updatePhase2(progress);
+    updateProgressBar2(progress);
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!prefersReduced.matches) {
+    window.addEventListener('scroll', onScroll2, { passive: true });
+  }
+
+  preload();
+})();
