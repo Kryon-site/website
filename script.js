@@ -206,8 +206,8 @@ if (walkthroughEl && stepBtns.length) {
       el.classList.toggle('active', Number(el.dataset.phase) === phase);
     });
 
-    // Step labels in stepper
-    document.querySelectorAll('.scrub-step-label').forEach(el => {
+    // Step tracker
+    document.querySelectorAll('.scrub-track-step').forEach(el => {
       el.classList.toggle('active', Number(el.dataset.step) === phase);
     });
 
@@ -324,3 +324,98 @@ function syncHeaderState() {
 
 syncHeaderState();
 window.addEventListener('scroll', syncHeaderState, { passive: true });
+
+/* ── Feature showcase tabs ───────────────────────────────────────────── */
+(function () {
+  const featTabs   = Array.from(document.querySelectorAll('.feat-tab'));
+  const featPanels = Array.from(document.querySelectorAll('.feat-panel'));
+  if (!featTabs.length) return;
+
+  const FEAT_DELAY = 5000;
+  let featTimer  = null;
+  let currentFeat = Math.max(
+    featTabs.findIndex(t => t.classList.contains('active')),
+    0
+  );
+
+  function goToFeat(index) {
+    index = ((index % featTabs.length) + featTabs.length) % featTabs.length;
+
+    featTabs.forEach((tab, i) => {
+      const active = i === index;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+
+      if (active) {
+        const bar = tab.querySelector('.feat-tab-progress');
+        if (bar) {
+          const clone = bar.cloneNode(true);
+          bar.parentNode.replaceChild(clone, bar);
+        }
+      }
+    });
+
+    featPanels.forEach((panel, i) => {
+      const active = i === index;
+      panel.classList.toggle('active', active);
+      panel.hidden = !active;
+    });
+
+    currentFeat = index;
+  }
+
+  function startFeatAuto() {
+    clearInterval(featTimer);
+    featTimer = setInterval(() => goToFeat(currentFeat + 1), FEAT_DELAY);
+  }
+
+  function stopFeatAuto() { clearInterval(featTimer); }
+
+  featTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => { goToFeat(i); startFeatAuto(); });
+  });
+
+  const showcase = document.querySelector('.feat-showcase');
+  if (showcase) {
+    goToFeat(0);
+    const obs = new IntersectionObserver(
+      entries => entries[0]?.isIntersecting ? startFeatAuto() : stopFeatAuto(),
+      { threshold: 0.25 }
+    );
+    obs.observe(showcase);
+  }
+})();
+
+/* ── Hero mouse spotlight ────────────────────────────────────────────── */
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  let rafPending = false;
+  hero.addEventListener('mousemove', e => {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100).toFixed(1) + '%');
+      hero.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100).toFixed(1) + '%');
+      rafPending = false;
+    });
+  });
+})();
+
+/* ── Card 3-D tilt on hover ──────────────────────────────────────────── */
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReduced.matches) return;
+
+  document.querySelectorAll('.cert-card, .eng-row, .usecase-card, .kp-tile, .td-stat').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      el.style.transform = `perspective(500px) rotateY(${(x * 6).toFixed(1)}deg) rotateX(${(-y * 6).toFixed(1)}deg) translateZ(3px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+})();

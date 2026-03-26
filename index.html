@@ -6,7 +6,7 @@
     <title>Kryon | AI Business Automation</title>
     <meta
       name="description"
-      content="Kryon makes it easy to build, deploy, and manage AI workflows and agents for your business — set up in minutes, not months."
+      content="Kryon lets you build, deploy, and manage AI workflows and agents for your business — up and running fast, without engineers."
     />
     <meta name="theme-color" content="#06080e" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,13 +33,13 @@
         </a>
         <div class="nav-links">
           <a href="#capabilities">Capabilities</a>
-          <a href="#outcomes">Outcomes</a>
+          <a href="use-cases.html">Use Cases</a>
           <a href="#integrations">Integrations</a>
-          <a href="#trust">Trust</a>
+          <a href="story.html">My Story</a>
         </div>
         <div class="nav-cta">
           <a class="btn-elite-outline" href="#walkthrough">View demo</a>
-          <a class="btn-elite" href="#contact">Contact sales</a>
+          <a class="btn-elite" href="contact.html">Book a demo</a>
         </div>
       </nav>
     </header>
@@ -59,15 +59,15 @@
           </div>
 
           <h1 class="hero-headline">
-            AI workflows your<br />
-            business can deploy<br />
-            <em>in minutes.</em>
+            <span class="hl-line">AI workflows your</span>
+            <span class="hl-line">business runs on</span>
+            <span class="hl-line"><em>autopilot.</em></span>
           </h1>
 
           <p class="hero-sub">Build, deploy, and manage AI workflows — plus agents that handle the complex stuff.</p>
 
           <div class="hero-actions">
-            <a class="btn-primary-lg" href="#outcomes">Start free</a>
+            <a class="btn-primary-lg" href="contact.html">Start free</a>
             <a class="btn-ghost-lg" href="#walkthrough">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden="true">
                 <path d="M2.5 1.5l8 5-8 5v-10z" />
@@ -76,7 +76,11 @@
             </a>
           </div>
 
-
+          <div class="hero-live-notif" aria-hidden="true">
+            <span class="hln-dot"></span>
+            <span class="hln-text">Agent completed: <strong>Invoice processed → Slack alert sent</strong></span>
+            <span class="hln-time">just now</span>
+          </div>
 
         </div>
 
@@ -126,113 +130,96 @@
 
         <div class="engine-visual reveal">
           <div class="engine-glow"></div>
-          <div class="console-shell">
-            <div class="console-topbar">
-              <div>
-                <p class="console-label">Workflow dashboard</p>
-                <h3>Live automation across your business</h3>
+
+          <div class="eng-panel">
+            <div class="eng-header">
+              <div class="eng-header-left">
+                <span class="eng-live-dot"></span>
+                <span class="eng-panel-title">Live workflows</span>
               </div>
-              <div class="console-status">
-                <span class="status-dot"></span>
-                312 workflows running
+              <div class="eng-header-right">
+                <span class="eng-count-badge">
+                  <span class="status-dot"></span>
+                  312 running
+                </span>
               </div>
             </div>
 
-            <div class="console-grid">
-              <div class="console-card incident-card">
-                <div class="console-card-head">
-                  <span>New workflow triggered</span>
-                  <span>Lead onboarding</span>
-                </div>
-                <div class="thread-stack">
-                  <div class="thread-bubble customer">
-                    New lead signed up via website form — industry: eCommerce, size: 50–200.
-                  </div>
-                  <div class="thread-bubble system">
-                    Kryon pulled CRM data, enriched the record, and matched to a playbook.
-                  </div>
-                  <div class="thread-bubble ai">
-                    Confidence: 98.1%. Sending welcome sequence, assigning rep, creating task.
-                  </div>
-                </div>
-                <div class="intent-row">
-                  <span>Type: Lead nurture</span>
-                  <span>Priority: High</span>
-                  <span>Playbook: SMB-A</span>
-                </div>
+            <div class="eng-col-heads" aria-hidden="true">
+              <span>Workflow</span>
+              <span>Team</span>
+              <span>Time</span>
+              <span>Status</span>
+            </div>
+
+            <div class="eng-rows">
+              <div class="eng-row">
+                <span class="eng-task">Lead enriched → rep assigned → welcome email sent</span>
+                <span class="eng-team">Sales</span>
+                <span class="eng-elapsed">0.3s</span>
+                <span class="eng-status eng-status-live"><span class="eng-rundot"></span>Running</span>
               </div>
-
-              <div class="console-card command-card">
-                <div class="console-card-head">
-                  <span>Agent task graph</span>
-                  <span>Elapsed 06.4s</span>
-                </div>
-                <div class="command-steps">
-                  <div class="command-step done">
-                    <span class="step-dot"></span>
-                    Enrich lead and score against ICP criteria
-                  </div>
-                  <div class="command-step done">
-                    <span class="step-dot"></span>
-                    Assign to sales rep and create CRM opportunity
-                  </div>
-                  <div class="command-step live">
-                    <span class="step-dot"></span>
-                    Send personalised welcome email and Slack alert
-                  </div>
-                </div>
+              <div class="eng-row">
+                <span class="eng-task">Invoice flagged → finance team notified → logged</span>
+                <span class="eng-team">Finance</span>
+                <span class="eng-elapsed">1.2s</span>
+                <span class="eng-status eng-status-done">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Done
+                </span>
               </div>
-
-              <div class="console-side">
-                <div class="console-card mini-card">
-                  <p class="mini-label">Automation rate</p>
-                  <div class="meter">
-                    <span style="--meter: 87%"></span>
-                  </div>
-                  <div class="mini-meta">
-                    <strong>87%</strong>
-                    <span>Tasks completed without manual effort</span>
-                  </div>
-                </div>
-
-                <div class="console-card mini-card">
-                  <p class="mini-label">Workflow breakdown</p>
-                  <div class="approval-stack">
-                    <div>
-                      <span>Fully automated</span>
-                      <strong>71%</strong>
-                    </div>
-                    <div>
-                      <span>Agent-assisted</span>
-                      <strong>18%</strong>
-                    </div>
-                    <div>
-                      <span>Human review</span>
-                      <strong>11%</strong>
-                    </div>
-                  </div>
-                </div>
+              <div class="eng-row">
+                <span class="eng-task">Support ticket routed → agent briefed → replied</span>
+                <span class="eng-team">Support</span>
+                <span class="eng-elapsed">0.7s</span>
+                <span class="eng-status eng-status-done">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Done
+                </span>
+              </div>
+              <div class="eng-row">
+                <span class="eng-task">New user → onboarding sequence triggered</span>
+                <span class="eng-team">Growth</span>
+                <span class="eng-elapsed">2.1s</span>
+                <span class="eng-status eng-status-live"><span class="eng-rundot"></span>Running</span>
+              </div>
+              <div class="eng-row">
+                <span class="eng-task">Contract signed → legal review started → Slack alert</span>
+                <span class="eng-team">Legal</span>
+                <span class="eng-elapsed">3.4s</span>
+                <span class="eng-status eng-status-done">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Done
+                </span>
+              </div>
+              <div class="eng-row eng-row-last">
+                <span class="eng-task">New lead scored → playbook matched → task created</span>
+                <span class="eng-team">Sales</span>
+                <span class="eng-elapsed">0.1s</span>
+                <span class="eng-status eng-status-live"><span class="eng-rundot"></span>Running</span>
               </div>
             </div>
+
+            <div class="eng-scan" aria-hidden="true"></div>
           </div>
+        </div>
 
-          <div class="engine-stats">
-            <div class="estat reveal reveal-d1">
-              <span class="estat-num" data-target="99.98" data-decimals="2">0</span><span class="estat-unit">%</span>
-              <p>Platform uptime</p>
-            </div>
-            <div class="estat reveal reveal-d2">
-              <span class="estat-num" data-target="10" data-decimals="0">0</span><span class="estat-unit"> min</span>
-              <p>Avg. setup time</p>
-            </div>
-            <div class="estat reveal reveal-d3">
-              <span class="estat-num" data-target="3.2" data-decimals="1">0</span><span class="estat-unit">x</span>
-              <p>Faster operations</p>
-            </div>
-            <div class="estat reveal reveal-d4">
-              <span class="estat-num" data-target="60" data-decimals="0">0</span><span class="estat-unit"> days</span>
-              <p>Median ROI</p>
-            </div>
+        <div class="engine-stats">
+          <div class="estat reveal reveal-d1">
+            <span class="estat-num" data-target="99.98" data-decimals="2">0</span><span class="estat-unit">%</span>
+            <p>Platform uptime</p>
+          </div>
+          <div class="estat reveal reveal-d2">
+            <span class="estat-num" data-target="1" data-decimals="0">0</span><span class="estat-unit"> day</span>
+            <p>Time to first workflow</p>
+          </div>
+          <div class="estat reveal reveal-d3">
+            <span class="estat-num" data-target="3.2" data-decimals="1">0</span><span class="estat-unit">x</span>
+            <p>Faster operations</p>
+          </div>
+          <div class="estat reveal reveal-d4">
+            <span class="estat-num" data-target="60" data-decimals="0">0</span><span class="estat-unit"> days</span>
+            <p>Median ROI</p>
           </div>
         </div>
       </section>
@@ -241,7 +228,7 @@
         <div class="container">
           <div class="section-header reveal">
             <p class="eyebrow">How it works</p>
-            <h2>Up and running<br /><em>in minutes.</em></h2>
+            <h2>Up and running,<br /><em>fast.</em></h2>
           </div>
 
           <div class="steps-layout reveal">
@@ -313,137 +300,197 @@
             </div>
 
             <div class="steps-display">
+
+              <!-- ── 01 Connect ──────────────────────────────────────── -->
               <div class="step-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
-                <div class="step-stage">
-                  <div class="stage-card chat-card">
-                    <div class="stage-heading">
-                      <span>Integrations</span>
-                      <span>One-click connect</span>
+                <div class="wp-card">
+                  <div class="wp-chrome">
+                    <span class="wp-chrome-title">Integrations</span>
+                    <span class="wp-chrome-badge"><span class="wp-dot"></span>6 / 6 synced</span>
+                  </div>
+                  <div class="int-rows">
+                    <div class="int-row">
+                      <div class="int-logo"><img src="media/connectors/hubspot.svg" alt="" /></div>
+                      <span class="int-name">HubSpot CRM</span>
+                      <span class="int-stat">2,340 contacts</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
                     </div>
-                    <div class="stage-chat">
-                      <div class="stage-msg inbound">
-                        "Connect my HubSpot, Slack, and Gmail accounts."
-                      </div>
-                      <div class="stage-msg neutral">
-                        Kryon authenticates each tool and maps your data in the background.
-                      </div>
-                      <div class="stage-msg outbound">
-                        3 integrations live. Your stack is ready to automate.
-                      </div>
+                    <div class="int-row">
+                      <div class="int-logo"><img src="media/connectors/slack.svg" alt="" /></div>
+                      <span class="int-name">Slack</span>
+                      <span class="int-stat">5 channels</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
+                    </div>
+                    <div class="int-row">
+                      <div class="int-logo"><img src="media/connectors/gmail.svg" alt="" /></div>
+                      <span class="int-name">Gmail</span>
+                      <span class="int-stat">Inbox synced</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
+                    </div>
+                    <div class="int-row">
+                      <div class="int-logo"><img src="media/connectors/stripe.svg" alt="" /></div>
+                      <span class="int-name">Stripe</span>
+                      <span class="int-stat">$12k MRR</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
+                    </div>
+                    <div class="int-row">
+                      <div class="int-logo"><img src="media/connectors/notion.svg" alt="" /></div>
+                      <span class="int-name">Notion</span>
+                      <span class="int-stat">3 workspaces</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
+                    </div>
+                    <div class="int-row int-row-last">
+                      <div class="int-logo"><img src="media/connectors/google_drive.svg" alt="" /></div>
+                      <span class="int-name">Google Drive</span>
+                      <span class="int-stat">12 folders</span>
+                      <span class="int-live"><span class="int-dot"></span>Live</span>
                     </div>
                   </div>
-                  <div class="stage-card insights-card">
-                    <div class="stage-heading">
-                      <span>Connected tools</span>
-                      <span>Ready</span>
-                    </div>
-                    <div class="signal-grid">
-                      <span>HubSpot CRM</span>
-                      <span>Gmail inbox</span>
-                      <span>Slack workspace</span>
-                      <span>Google Drive</span>
-                      <span>Stripe payments</span>
-                      <span>Notion workspace</span>
-                    </div>
+                  <div class="wp-footer">
+                    <span>Your stack is ready to automate</span>
+                    <span class="wp-footer-time">47s</span>
                   </div>
                 </div>
               </div>
 
+              <!-- ── 02 Configure ────────────────────────────────────── -->
               <div class="step-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
-                <div class="step-stage">
-                  <div class="stage-card matrix-card">
-                    <div class="stage-heading">
-                      <span>Workflow builder</span>
-                      <span>Template selected</span>
-                    </div>
-                    <div class="matrix-list">
-                      <div><span>Lead follow-up sequence</span><strong>Selected</strong></div>
-                      <div><span>Trigger: new CRM contact</span><strong>Set</strong></div>
-                      <div><span>Action: send email + Slack alert</span><strong>Configured</strong></div>
-                      <div><span>Fallback: assign to rep</span><strong>Ready</strong></div>
-                    </div>
+                <div class="wp-card">
+                  <div class="wp-chrome">
+                    <span class="wp-chrome-title">Lead follow-up</span>
+                    <span class="wp-chrome-ready">✓ Ready to deploy</span>
                   </div>
-                  <div class="stage-card confidence-card">
-                    <div class="stage-heading">
-                      <span>Setup complete</span>
-                      <span>100%</span>
+                  <div class="wf-canvas">
+                    <div class="wf-trigger">
+                      <span class="wf-trigger-label">Trigger</span>
+                      <div class="wf-trigger-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      </div>
+                      <strong>New CRM contact</strong>
                     </div>
-                    <div class="confidence-ring">
-                      <div class="ring-center">
-                        <strong>100%</strong>
-                        <span>ready to deploy</span>
+                    <!-- SVG bracket connector -->
+                    <svg class="wf-svg" viewBox="0 0 40 135" preserveAspectRatio="none" aria-hidden="true">
+                      <line x1="0" y1="67.5" x2="20" y2="67.5" stroke="rgba(45,182,202,0.35)" stroke-width="1.5"/>
+                      <line x1="20" y1="22.5" x2="20" y2="112.5" stroke="rgba(45,182,202,0.35)" stroke-width="1.5"/>
+                      <line x1="20" y1="22.5" x2="40" y2="22.5" stroke="rgba(45,182,202,0.35)" stroke-width="1.5"/>
+                      <line x1="20" y1="67.5" x2="40" y2="67.5" stroke="rgba(45,182,202,0.35)" stroke-width="1.5"/>
+                      <line x1="20" y1="112.5" x2="40" y2="112.5" stroke="rgba(45,182,202,0.35)" stroke-width="1.5"/>
+                    </svg>
+                    <div class="wf-actions">
+                      <div class="wf-action">
+                        <div class="wf-action-icon">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="wf-action-body">
+                          <small>Email</small>
+                          <span>Send welcome sequence</span>
+                        </div>
+                      </div>
+                      <div class="wf-action">
+                        <div class="wf-action-icon">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        </div>
+                        <div class="wf-action-body">
+                          <small>Slack</small>
+                          <span>Alert sales rep</span>
+                        </div>
+                      </div>
+                      <div class="wf-action">
+                        <div class="wf-action-icon">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <div class="wf-action-body">
+                          <small>CRM</small>
+                          <span>Create opportunity</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+              <!-- ── 03 Deploy ───────────────────────────────────────── -->
               <div class="step-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
-                <div class="step-stage">
-                  <div class="stage-card workflow-card">
-                    <div class="stage-heading">
-                      <span>Deployment log</span>
-                      <span>6.4 seconds</span>
+                <div class="wp-card wp-card-dark">
+                  <div class="term-chrome">
+                    <div class="term-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="term-file">deployment.log</span>
+                    <span class="term-elapsed">6.4s</span>
+                  </div>
+                  <div class="term-body">
+                    <div class="term-entry">
+                      <span class="term-ts">00:01</span>
+                      <span class="term-ok" aria-hidden="true">✓</span>
+                      <span class="term-text">Workflow published and active</span>
                     </div>
-                    <div class="workflow-list">
-                      <div><strong>01</strong><span>Workflow published and active</span></div>
-                      <div><strong>02</strong><span>AI agent assigned and briefed</span></div>
-                      <div><strong>03</strong><span>First trigger fired successfully</span></div>
-                      <div><strong>04</strong><span>Results logged to dashboard</span></div>
+                    <div class="term-entry">
+                      <span class="term-ts">00:02</span>
+                      <span class="term-ok" aria-hidden="true">✓</span>
+                      <span class="term-text">AI agent assigned and briefed</span>
+                    </div>
+                    <div class="term-entry">
+                      <span class="term-ts">00:04</span>
+                      <span class="term-ok" aria-hidden="true">✓</span>
+                      <span class="term-text">First trigger fired — 3 actions queued</span>
+                    </div>
+                    <div class="term-entry">
+                      <span class="term-ts">00:05</span>
+                      <span class="term-ok" aria-hidden="true">✓</span>
+                      <span class="term-text">Welcome email delivered <span class="term-dim">(1.8s)</span></span>
+                    </div>
+                    <div class="term-entry term-running">
+                      <span class="term-ts">00:06</span>
+                      <span class="term-spinner" aria-hidden="true"></span>
+                      <span class="term-text">Updating CRM and Slack<span class="term-cursor">_</span></span>
                     </div>
                   </div>
-                  <div class="stage-card actions-card">
-                    <div class="stage-heading">
-                      <span>Outputs</span>
-                      <span>4 systems updated</span>
+                  <div class="term-foot">
+                    <div class="term-prog">
+                      <div class="term-prog-fill"></div>
                     </div>
-                    <div class="action-pills">
-                      <span>Welcome email sent</span>
-                      <span>CRM record updated</span>
-                      <span>Slack alert fired</span>
-                      <span>Task created</span>
+                    <span class="term-prog-label">4 / 5 complete</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── 04 Scale ────────────────────────────────────────── -->
+              <div class="step-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+                <div class="wp-card">
+                  <div class="wp-chrome">
+                    <span class="wp-chrome-title">Performance</span>
+                    <span class="wp-chrome-meta">Last 7 days <span class="wp-dot"></span></span>
+                  </div>
+                  <div class="kp-body">
+                    <div class="kp-hero">
+                      <span class="kp-num">340</span>
+                      <div class="kp-hero-aside">
+                        <span class="kp-label">tasks this week</span>
+                        <span class="kp-trend">↑ 38% vs last week</span>
+                      </div>
+                    </div>
+                    <div class="kp-chart" aria-hidden="true">
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:42%"></div><span>M</span></div>
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:58%"></div><span>T</span></div>
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:51%"></div><span>W</span></div>
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:74%"></div><span>T</span></div>
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:68%"></div><span>F</span></div>
+                      <div class="kp-bar-col"><div class="kp-bar-fill" style="--h:82%"></div><span>S</span></div>
+                      <div class="kp-bar-col kp-today"><div class="kp-bar-fill" style="--h:91%"></div><span>S</span></div>
+                    </div>
+                    <div class="kp-tiles">
+                      <div class="kp-tile">
+                        <strong>28h</strong>
+                        <span>saved this week</span>
+                      </div>
+                      <div class="kp-tile kp-tile-accent">
+                        <strong>74%</strong>
+                        <span>fully automated</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="step-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
-                <div class="step-stage">
-                  <div class="stage-card learn-card">
-                    <div class="stage-heading">
-                      <span>Performance overview</span>
-                      <span>Updated live</span>
-                    </div>
-                    <div class="learn-metrics">
-                      <div>
-                        <span>Tasks automated</span>
-                        <strong>+340</strong>
-                      </div>
-                      <div>
-                        <span>Hours saved this week</span>
-                        <strong>28 hrs</strong>
-                      </div>
-                      <div>
-                        <span>Manual effort reduction</span>
-                        <strong>-74%</strong>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="stage-card trend-card">
-                    <div class="stage-heading">
-                      <span>Automation growth</span>
-                      <span>Last 30 days</span>
-                    </div>
-                    <div class="trend-bars" aria-hidden="true">
-                      <span style="--bar: 44%"></span>
-                      <span style="--bar: 59%"></span>
-                      <span style="--bar: 68%"></span>
-                      <span style="--bar: 78%"></span>
-                      <span style="--bar: 91%"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -455,63 +502,293 @@
             <p class="eyebrow">Capabilities</p>
             <h2>Everything in one<br /><em>platform.</em></h2>
           </div>
+        </div>
 
-          <div class="features-bento reveal">
-            <div class="feat feat-wide feat-has-img">
-              <div class="feat-content">
-                <div class="feat-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <h3>AI agents for complex work</h3>
+        <div class="feat-showcase reveal">
+
+          <!-- Left: feature navigation -->
+          <div class="feat-nav" role="tablist" aria-label="Platform features">
+
+            <button class="feat-tab active" data-feat="0" role="tab" aria-selected="true" aria-controls="fp-0">
+              <span class="feat-tab-num">01</span>
+              <div class="feat-tab-body">
+                <h4>AI agents</h4>
                 <p>Research, decide, act — across every tool, without a human in the loop.</p>
-                <span class="feat-pill">Core product</span>
               </div>
-              <div class="feat-cinematic">
-                <img src="media/images/2.jpeg" alt="" />
-                <div class="feat-cinematic-fade"></div>
+              <div class="feat-tab-bar"><div class="feat-tab-progress"></div></div>
+            </button>
+
+            <button class="feat-tab" data-feat="1" role="tab" aria-selected="false" aria-controls="fp-1">
+              <span class="feat-tab-num">02</span>
+              <div class="feat-tab-body">
+                <h4>No-code setup</h4>
+                <p>Build automations in plain English — no developers, no drag-and-drop hell.</p>
+              </div>
+              <div class="feat-tab-bar"><div class="feat-tab-progress"></div></div>
+            </button>
+
+            <button class="feat-tab" data-feat="2" role="tab" aria-selected="false" aria-controls="fp-2">
+              <span class="feat-tab-num">03</span>
+              <div class="feat-tab-body">
+                <h4>100+ integrations</h4>
+                <p>HubSpot, Slack, Stripe, Gmail — your entire stack, unified.</p>
+              </div>
+              <div class="feat-tab-bar"><div class="feat-tab-progress"></div></div>
+            </button>
+
+            <button class="feat-tab" data-feat="3" role="tab" aria-selected="false" aria-controls="fp-3">
+              <span class="feat-tab-num">04</span>
+              <div class="feat-tab-body">
+                <h4>Managed service</h4>
+                <p>We monitor and improve your workflows so you never have to think about them.</p>
+              </div>
+              <div class="feat-tab-bar"><div class="feat-tab-progress"></div></div>
+            </button>
+
+            <button class="feat-tab" data-feat="4" role="tab" aria-selected="false" aria-controls="fp-4">
+              <span class="feat-tab-num">05</span>
+              <div class="feat-tab-body">
+                <h4>Live analytics</h4>
+                <p>Hours saved, tasks automated, ROI — visible the moment it happens.</p>
+              </div>
+              <div class="feat-tab-bar"><div class="feat-tab-progress"></div></div>
+            </button>
+
+          </div>
+
+          <!-- Right: feature preview panels -->
+          <div class="feat-panels">
+
+            <!-- 01 AI Agents -->
+            <div class="feat-panel active" id="fp-0" role="tabpanel" data-feat="0">
+              <div class="fp-chrome">
+                <span class="fp-dot fp-dot-red"></span><span class="fp-dot fp-dot-yellow"></span><span class="fp-dot fp-dot-green"></span>
+                <span class="fp-title">Kryon Agent · Sales outreach</span>
+                <span class="fp-live"><span class="fp-live-dot"></span>Live</span>
+              </div>
+              <div class="fp-agent-body">
+                <div class="fp-step fp-step-done">
+                  <span class="fp-step-icon fp-icon-done"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="fp-step-text">Pulled 3 new leads from HubSpot</span>
+                  <span class="fp-step-time">0.2s</span>
+                </div>
+                <div class="fp-step fp-step-done">
+                  <span class="fp-step-icon fp-icon-done"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="fp-step-text">Enriched profiles with LinkedIn data</span>
+                  <span class="fp-step-time">1.4s</span>
+                </div>
+                <div class="fp-step fp-step-active">
+                  <span class="fp-step-icon fp-icon-spin" aria-hidden="true"></span>
+                  <span class="fp-step-text">Drafting personalised outreach<span class="fp-cursor" aria-hidden="true">_</span></span>
+                  <span class="fp-step-time">—</span>
+                </div>
+                <div class="fp-step fp-step-pending">
+                  <span class="fp-step-icon fp-icon-pending" aria-hidden="true"></span>
+                  <span class="fp-step-text">Send via Gmail + log to CRM</span>
+                  <span class="fp-step-time">—</span>
+                </div>
+                <div class="fp-draft">
+                  <div class="fp-draft-label">Draft in progress</div>
+                  <div class="fp-draft-lines">
+                    <div class="fp-line fp-line-full"></div>
+                    <div class="fp-line fp-line-3q"></div>
+                    <div class="fp-line fp-line-typing"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="feat">
-              <div class="feat-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <!-- 02 No-code setup -->
+            <div class="feat-panel" id="fp-1" role="tabpanel" data-feat="1" hidden>
+              <div class="fp-chrome">
+                <span class="fp-dot fp-dot-red"></span><span class="fp-dot fp-dot-yellow"></span><span class="fp-dot fp-dot-green"></span>
+                <span class="fp-title">Workflow builder</span>
+                <span class="fp-badge">No code required</span>
               </div>
-              <h3>No-code setup</h3>
-              <p>Templates or plain English. Zero developers required.</p>
+              <div class="fp-builder">
+                <div class="fp-node fp-node-trigger">
+                  <span class="fp-node-icon" aria-hidden="true">⚡</span>
+                  <div>
+                    <span class="fp-node-label">Trigger</span>
+                    <span class="fp-node-name">New form submission</span>
+                  </div>
+                </div>
+                <div class="fp-connector fp-connector-single" aria-hidden="true"></div>
+                <div class="fp-node">
+                  <span class="fp-node-icon" aria-hidden="true">🔍</span>
+                  <div>
+                    <span class="fp-node-label">Action</span>
+                    <span class="fp-node-name">Enrich lead data</span>
+                  </div>
+                </div>
+                <div class="fp-connector fp-connector-single" aria-hidden="true"></div>
+                <div class="fp-branch">
+                  <div class="fp-branch-condition">
+                    <span class="fp-node-icon" aria-hidden="true">◇</span>
+                    <div>
+                      <span class="fp-node-label">Condition</span>
+                      <span class="fp-node-name">Lead score ≥ 80?</span>
+                    </div>
+                  </div>
+                  <div class="fp-branch-arms">
+                    <div class="fp-branch-arm">
+                      <span class="fp-branch-label fp-branch-yes">Yes</span>
+                      <div class="fp-node fp-node-yes">
+                        <span class="fp-node-icon" aria-hidden="true">👤</span>
+                        <div>
+                          <span class="fp-node-label">Action</span>
+                          <span class="fp-node-name">Assign to rep</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fp-branch-arm">
+                      <span class="fp-branch-label fp-branch-no">No</span>
+                      <div class="fp-node fp-node-no">
+                        <span class="fp-node-icon" aria-hidden="true">📧</span>
+                        <div>
+                          <span class="fp-node-label">Action</span>
+                          <span class="fp-node-name">Add to nurture</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="feat">
-              <div class="feat-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            <!-- 03 Integrations -->
+            <div class="feat-panel" id="fp-2" role="tabpanel" data-feat="2" hidden>
+              <div class="fp-chrome">
+                <span class="fp-dot fp-dot-red"></span><span class="fp-dot fp-dot-yellow"></span><span class="fp-dot fp-dot-green"></span>
+                <span class="fp-title">Integrations</span>
+                <span class="fp-live"><span class="fp-live-dot"></span>6 connected</span>
               </div>
-              <h3>100+ integrations</h3>
-              <p>HubSpot, Slack, Stripe, Gmail — all connected in one click.</p>
+              <div class="fp-integrations">
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/hubspot.svg" alt="HubSpot" />
+                  <div class="fp-int-info"><span class="fp-int-name">HubSpot CRM</span><span class="fp-int-detail">Contacts, deals, pipelines</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/slack.svg" alt="Slack" />
+                  <div class="fp-int-info"><span class="fp-int-name">Slack</span><span class="fp-int-detail">Channels, DMs, workflows</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/stripe.svg" alt="Stripe" />
+                  <div class="fp-int-info"><span class="fp-int-name">Stripe</span><span class="fp-int-detail">Payments, invoices, events</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/gmail.svg" alt="Gmail" />
+                  <div class="fp-int-info"><span class="fp-int-name">Gmail</span><span class="fp-int-detail">Send, receive, parse</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/notion.svg" alt="Notion" />
+                  <div class="fp-int-info"><span class="fp-int-name">Notion</span><span class="fp-int-detail">Pages, databases, blocks</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-row">
+                  <img class="fp-int-logo" src="media/connectors/github.svg" alt="GitHub" />
+                  <div class="fp-int-info"><span class="fp-int-name">GitHub</span><span class="fp-int-detail">Repos, PRs, issues</span></div>
+                  <span class="fp-int-status fp-int-live"><span></span>Live</span>
+                </div>
+                <div class="fp-int-footer">
+                  <span>+ 94 more integrations available</span>
+                  <a href="#integrations" class="fp-int-link">Browse all →</a>
+                </div>
+              </div>
             </div>
 
-            <div class="feat feat-wide feat-alt">
-              <div class="feat-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            <!-- 04 Managed service -->
+            <div class="feat-panel" id="fp-3" role="tabpanel" data-feat="3" hidden>
+              <div class="fp-chrome">
+                <span class="fp-dot fp-dot-red"></span><span class="fp-dot fp-dot-yellow"></span><span class="fp-dot fp-dot-green"></span>
+                <span class="fp-title">Your automation team</span>
+                <span class="fp-badge fp-badge-gold">Managed</span>
               </div>
-              <h3>Managed workflows</h3>
-              <p>We don't just give you software — our team monitors and improves your automations so you can focus on growth.</p>
-              <span class="feat-pill feat-pill-alt">Most loved</span>
+              <div class="fp-managed">
+                <div class="fp-team-header">
+                  <div class="fp-team-avatars">
+                    <span class="fp-avatar fp-avatar-teal">KA</span>
+                    <span class="fp-avatar fp-avatar-blue">MJ</span>
+                    <span class="fp-avatar fp-avatar-purple">SR</span>
+                  </div>
+                  <div class="fp-team-copy">
+                    <span class="fp-team-label">Active right now</span>
+                    <span class="fp-team-sub">Monitoring your workflows</span>
+                  </div>
+                  <span class="fp-online-dot" aria-hidden="true"></span>
+                </div>
+                <div class="fp-managed-rows">
+                  <div class="fp-managed-row">
+                    <span class="fp-mr-check fp-mr-pass"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="fp-mr-name">Lead scoring workflow</span>
+                    <span class="fp-mr-stat">312 runs today</span>
+                    <span class="fp-mr-status">Healthy</span>
+                  </div>
+                  <div class="fp-managed-row">
+                    <span class="fp-mr-check fp-mr-pass"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="fp-mr-name">Invoice processing</span>
+                    <span class="fp-mr-stat">48 runs today</span>
+                    <span class="fp-mr-status">Healthy</span>
+                  </div>
+                  <div class="fp-managed-row">
+                    <span class="fp-mr-check fp-mr-pass"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="fp-mr-name">Support ticket router</span>
+                    <span class="fp-mr-stat">91 runs today</span>
+                    <span class="fp-mr-status">Healthy</span>
+                  </div>
+                </div>
+                <div class="fp-managed-footer">
+                  <span class="fp-mf-icon" aria-hidden="true">✦</span>
+                  <span>We handle the maintenance. You focus on growth.</span>
+                </div>
+              </div>
             </div>
 
-            <div class="feat">
-              <div class="feat-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <!-- 05 Analytics -->
+            <div class="feat-panel" id="fp-4" role="tabpanel" data-feat="4" hidden>
+              <div class="fp-chrome">
+                <span class="fp-dot fp-dot-red"></span><span class="fp-dot fp-dot-yellow"></span><span class="fp-dot fp-dot-green"></span>
+                <span class="fp-title">Analytics — this week</span>
+                <span class="fp-live"><span class="fp-live-dot"></span>Updating live</span>
               </div>
-              <h3>Live analytics</h3>
-              <p>Hours saved, tasks automated, ROI — visible in real time.</p>
+              <div class="fp-analytics">
+                <div class="fp-an-hero">
+                  <span class="fp-an-num">1,847</span>
+                  <div class="fp-an-aside">
+                    <span class="fp-an-label">tasks automated</span>
+                    <span class="fp-an-trend">↑ 23% vs last week</span>
+                  </div>
+                </div>
+                <div class="fp-an-chart" aria-hidden="true">
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:52%"></div><span>M</span></div>
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:67%"></div><span>T</span></div>
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:58%"></div><span>W</span></div>
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:81%"></div><span>T</span></div>
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:74%"></div><span>F</span></div>
+                  <div class="fp-an-bar-col"><div class="fp-an-bar" style="--h:88%"></div><span>S</span></div>
+                  <div class="fp-an-bar-col fp-an-today"><div class="fp-an-bar" style="--h:95%"></div><span>S</span></div>
+                </div>
+                <div class="fp-an-stats">
+                  <div class="fp-an-stat">
+                    <strong>34h</strong>
+                    <span>saved this week</span>
+                  </div>
+                  <div class="fp-an-stat">
+                    <strong>$4,200</strong>
+                    <span>est. labour saved</span>
+                  </div>
+                  <div class="fp-an-stat fp-an-stat-accent">
+                    <strong>98.7%</strong>
+                    <span>success rate</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="feat">
-              <div class="feat-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
-              </div>
-              <h3>Scales with you</h3>
-              <p>One workflow today, hundreds tomorrow. Grows as fast as you do.</p>
-            </div>
           </div>
         </div>
       </section>
@@ -649,145 +926,130 @@
         </div>
       </section>
 
-      <section class="testimonials-section">
-        <div class="container">
-          <div class="section-header centered reveal">
-            <p class="eyebrow">Customer results</p>
-            <h2>Real teams.<br /><em>Real outcomes.</em></h2>
-          </div>
-
-          <div class="tgrid reveal">
-            <div class="tcard tcard-featured tcard-hero">
-              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-              <blockquote>"A task that used to take our team hours — handled start to finish in minutes, across five different tools."</blockquote>
-              <div class="tcard-metric">74% reduction in manual ops work</div>
-              <footer class="tcard-author">
-                <div class="tauthor-avatar tauthor-avatar-teal">CF</div>
-                <div>
-                  <span class="tauthor-name">Co-founder &amp; CEO</span>
-                  <span class="tauthor-co">eCommerce Scale-up</span>
-                </div>
-              </footer>
-            </div>
-
-            <div class="tcard">
-              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-              <blockquote>"Up and running in 20 minutes. It just worked."</blockquote>
-              <footer class="tcard-author">
-                <div class="tauthor-avatar">HO</div>
-                <div>
-                  <span class="tauthor-name">Head of Operations</span>
-                  <span class="tauthor-co">Growth-stage SaaS</span>
-                </div>
-              </footer>
-            </div>
-
-            <div class="tcard">
-              <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-              <blockquote>"The only platform our non-technical team could actually use."</blockquote>
-              <footer class="tcard-author">
-                <div class="tauthor-avatar">OM</div>
-                <div>
-                  <span class="tauthor-name">Operations Manager</span>
-                  <span class="tauthor-co">Professional Services Firm</span>
-                </div>
-              </footer>
-            </div>
-          </div>
-
-          <div class="proof-bar reveal">
-            <div class="pstat">
-              <span>200+</span>
-              <p>Businesses automated</p>
-            </div>
-            <div class="proof-divider" aria-hidden="true"></div>
-            <div class="pstat">
-              <span>4.9 / 5</span>
-              <p>Satisfaction score</p>
-            </div>
-            <div class="proof-divider" aria-hidden="true"></div>
-            <div class="pstat">
-              <span>&lt; 10 min</span>
-              <p>Avg. setup time</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="trust" class="trust-section">
-        <div class="container">
-          <div class="trust-layout reveal">
-            <div class="trust-copy">
-              <p class="eyebrow">Security &amp; compliance</p>
-              <h2>Enterprise-grade<br /><em>out of the box.</em></h2>
-              <p class="lead">
-                SOC 2 Type II, GDPR-ready, encrypted end-to-end. Automate with confidence.
-              </p>
-              <div class="compliance-grid">
-                <div class="comp-item">
-                  <div class="comp-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-                  </div>
-                  <div>
-                    <h5>SOC 2 Type II</h5>
-                    <p>Audited security and availability controls</p>
-                  </div>
-                </div>
-                <div class="comp-item">
-                  <div class="comp-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                  </div>
-                  <div>
-                    <h5>Encrypted by default</h5>
-                    <p>Data in transit and at rest, always</p>
-                  </div>
-                </div>
-                <div class="comp-item">
-                  <div class="comp-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                  </div>
-                  <div>
-                    <h5>GDPR-ready</h5>
-                    <p>Regional data controls and consent routing</p>
-                  </div>
-                </div>
-                <div class="comp-item">
-                  <div class="comp-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                  </div>
-                  <div>
-                    <h5>Role-based access</h5>
-                    <p>Granular permissions, queues, and approval tiers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Security &amp; compliance</p>
+      <h2>Enterprise-grade,<br /><em>out of the box.</em></h2>
+    </div>
 
-            <div class="trust-visual" aria-hidden="true">
-              <div class="orbit-system">
-                <div class="orbit orbit-3"></div>
-                <div class="orbit orbit-2"></div>
-                <div class="orbit orbit-1"></div>
-                <div class="orbit-core">
-                  <img src="media/images/logo.png" alt="Kryon" />
-                </div>
-                <div class="orbit-dot dot-1"></div>
-                <div class="orbit-dot dot-2"></div>
-                <div class="orbit-dot dot-3"></div>
-              </div>
-            </div>
+    <div class="trust-certs reveal">
+      <div class="cert-card">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h5>SOC 2 Type II</h5>
+        <p>Annual third-party security audit with zero critical findings</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h5>AES-256 Encryption</h5>
+        <p>All data encrypted in transit and at rest, every time</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h5>GDPR &amp; CCPA</h5>
+        <p>Regional data residency, consent routing, right to erasure</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h5>Role-Based Access</h5>
+        <p>Granular permissions, approval tiers, full audit logs</p>
+      </div>
+    </div>
+
+    <div class="trust-dashboard reveal">
+      <div class="td-left">
+        <div class="td-header">
+          <span class="td-live-dot"></span>
+          <span class="td-title">Security status</span>
+          <span class="td-badge">All systems nominal</span>
+        </div>
+        <div class="td-checks">
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">Data encrypted at rest</span>
+            <span class="td-check-meta">AES-256-GCM</span>
+          </div>
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">TLS 1.3 in transit</span>
+            <span class="td-check-meta">Certificate valid</span>
+          </div>
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">SOC 2 controls active</span>
+            <span class="td-check-meta">Last audit: Jan 2026</span>
+          </div>
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">GDPR data residency</span>
+            <span class="td-check-meta">EU region isolated</span>
+          </div>
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">Intrusion detection</span>
+            <span class="td-check-meta">0 alerts (30d)</span>
+          </div>
+          <div class="td-check">
+            <span class="td-check-icon td-check-pass">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="td-check-label">MFA enforced</span>
+            <span class="td-check-meta">All accounts</span>
           </div>
         </div>
-      </section>
+      </div>
+      <div class="td-right">
+        <div class="td-uptime">
+          <span class="td-uptime-num">99.98<span class="td-uptime-pct">%</span></span>
+          <span class="td-uptime-label">Uptime — last 12 months</span>
+          <div class="td-uptime-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span class="td-uptime-bar-dim"></span>
+          </div>
+        </div>
+        <div class="td-stat-row">
+          <div class="td-stat">
+            <span>Zero</span>
+            <p>Data breaches ever</p>
+          </div>
+          <div class="td-stat">
+            <span>&lt; 200ms</span>
+            <p>Auth response time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section id="outcomes" class="cta-section">
         <div class="cta-ambient"></div>
         <div class="container reveal">
-          <h2>Your first workflow<br /><em>live in minutes.</em></h2>
-          <p class="cta-sub">No engineers. No setup fees. No waiting.</p>
+          <h2>Your first workflow<br /><em>live today.</em></h2>
+          <p class="cta-sub">No engineers. No setup fees. Just results.</p>
           <div class="cta-actions">
-            <a class="btn-primary-lg" href="#contact">Start free</a>
-            <a class="btn-ghost-lg" href="#contact">Talk to sales</a>
+            <a class="btn-primary-lg" href="contact.html">Start free</a>
+            <a class="btn-ghost-lg" href="contact.html">Talk to sales</a>
           </div>
         </div>
       </section>
@@ -796,7 +1058,7 @@
     <footer class="footer" id="contact">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <a class="brand" href="#top" aria-label="Kryon home">
+          <a class="brand" href="index.html" aria-label="Kryon home">
             <img class="brand-logo" src="media/images/logo.png" alt="Kryon logo" />
             <span class="brand-name">Kryon</span>
           </a>
@@ -806,28 +1068,30 @@
           <div>
             <h5>Product</h5>
             <a href="#capabilities">Capabilities</a>
-            <a href="#outcomes">Outcomes</a>
+            <a href="use-cases.html">Use Cases</a>
             <a href="#integrations">Integrations</a>
+            <a href="#walkthrough">How it works</a>
           </div>
           <div>
             <h5>Company</h5>
+            <a href="story.html">My Story</a>
             <a href="#trust">Security</a>
-            <a href="#walkthrough">How it works</a>
-            <a href="#contact">Careers</a>
+            <a href="contact.html">Careers</a>
+            <a href="contact.html">Press</a>
           </div>
           <div>
             <h5>Get in touch</h5>
-            <a href="#outcomes">Book a demo</a>
-            <a href="#contact">Support</a>
-            <a href="#contact">Press</a>
+            <a href="contact.html">Book a demo</a>
+            <a href="contact.html">Talk to sales</a>
+            <a href="contact.html">Support</a>
           </div>
         </div>
       </div>
       <div class="container footer-bottom">
         <p>© 2026 Kryon. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links">
-          <a href="#contact">Privacy</a>
-          <a href="#contact">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
           <a href="#trust">Security</a>
         </nav>
       </div>
