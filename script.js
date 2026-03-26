@@ -157,6 +157,7 @@ if (walkthroughEl && stepBtns.length) {
   const FRAME_COUNT = 192;          // extracted frame count (24fps × 8s)
   const FRAME_DIR   = 'media/frames/hand/';
   const FRAME_EXT   = '.jpg';
+  const PRELOAD_RADIUS = 8;
 
   const section = document.getElementById('scrubSection');
   const canvas  = document.getElementById('scrubCanvas');
@@ -166,10 +167,12 @@ if (walkthroughEl && stepBtns.length) {
 
   // Loaded HTMLImageElement per frame index (null = not yet loaded)
   const frames = new Array(FRAME_COUNT).fill(null);
+  const framePromises = new Array(FRAME_COUNT).fill(null);
 
   let pendingIndex  = 0;   // frame to draw on next RAF
   let renderedIndex = -1;  // last frame actually drawn
   let rafId         = null;
+  let hasStarted    = false;
 
   // ── Sizing ───────────────────────────────────────────────────────────
   // After the first frame loads we know the video's intrinsic dimensions.
@@ -180,38 +183,40 @@ if (walkthroughEl && stepBtns.length) {
 
   function applyCanvasSize() {
     if (!nativeW) return;
-    const animSide = document.querySelector('.scrub-anim-side');
-    // Cap canvas within the right column: at most 46vw wide, 60vh tall
-    const maxW = animSide
-      ? Math.min(animSide.clientWidth  - 16, window.innerWidth  * 0.46)
-      : window.innerWidth * 0.46;
-    const maxH = window.innerHeight * 0.60;
+    const isMobile = window.innerWidth <= 900;
+    const canvasSide = section.querySelector('.scrub-canvas-side');
+    let maxW, maxH;
+    if (isMobile) {
+      maxW = canvasSide ? canvasSide.clientWidth : window.innerWidth * 0.92;
+      maxH = window.innerHeight * 0.47;
+    } else {
+      maxW = canvasSide
+        ? Math.min(canvasSide.clientWidth - 16, window.innerWidth * 0.46)
+        : window.innerWidth * 0.46;
+      maxH = window.innerHeight * 0.60;
+    }
     const scale = Math.min(maxW / nativeW, maxH / nativeH);
     canvas.style.width  = Math.round(nativeW * scale) + 'px';
     canvas.style.height = Math.round(nativeH * scale) + 'px';
   }
 
   // ── Phase switching ───────────────────────────────────────────────────
-  // Swaps the active phase class at the 45% progress mark.
-  // Phase 0 = problem (workflows), Phase 1 = solution (agents).
-  const scrubSticky = document.querySelector('.scrub-sticky');
-  let currentPhase  = -1; // force first call to always apply
+  const scrubSticky = section.querySelector('.scrub-sticky');
+  let currentPhase  = -1;
 
   function updatePhase(progress) {
     const phase = progress >= 0.45 ? 1 : 0;
-    if (phase === currentPhase) return;   // skip redundant DOM writes
+    if (phase === currentPhase) return;
     currentPhase = phase;
 
-    document.querySelectorAll('.scrub-phase').forEach(el => {
+    section.querySelectorAll('.scrub-phase').forEach(el => {
       el.classList.toggle('active', Number(el.dataset.phase) === phase);
     });
 
-    // Step tracker
-    document.querySelectorAll('.scrub-track-step').forEach(el => {
+    section.querySelectorAll('.scrub-track-step').forEach(el => {
       el.classList.toggle('active', Number(el.dataset.step) === phase);
     });
 
-    // Toggle a class on the sticky container so CSS can restyle globally
     if (scrubSticky) scrubSticky.classList.toggle('is-phase-agents', phase === 1);
   }
 
@@ -240,17 +245,52 @@ if (walkthroughEl && stepBtns.length) {
   }
 
   function loadFrame(i) {
-    return new Promise(resolve => {
-      if (frames[i]) { resolve(frames[i]); return; }
+    if (i < 0 || i >= FRAME_COUNT) return Promise.resolve(null);
+    if (frames[i]) return Promise.resolve(frames[i]);
+    if (framePromises[i]) return framePromises[i];
+
+    framePromises[i] = new Promise(resolve => {
       const img = new Image();
-      img.onload  = () => { frames[i] = img; resolve(img); };
-      img.onerror = () => resolve(null);
+      img.decoding = 'async';
+      img.onload  = () => {
+        frames[i] = img;
+        framePromises[i] = null;
+        resolve(img);
+      };
+      img.onerror = () => {
+        framePromises[i] = null;
+        resolve(null);
+      };
       img.src = `${FRAME_DIR}frame_${pad(i)}${FRAME_EXT}`;
     });
+
+    return framePromises[i];
   }
 
-  async function preload() {
-    // 1. Load frame 0 immediately so we have something to show right away
+  function preloadAround(index, radius = PRELOAD_RADIUS) {
+    const start = Math.max(0, index - radius);
+    const end = Math.min(FRAME_COUNT - 1, index + radius);
+    for (let i = start; i <= end; i++) {
+      void loadFrame(i);
+    }
+  }
+
+  function getNearestLoaded(index) {
+    if (frames[index]) return frames[index];
+    for (let offset = 1; offset < FRAME_COUNT; offset++) {
+      const prev = index - offset;
+      const next = index + offset;
+      if (prev >= 0 && frames[prev]) return frames[prev];
+      if (next < FRAME_COUNT && frames[next]) return frames[next];
+    }
+    return null;
+  }
+
+  async function startSequence() {
+    if (hasStarted) return;
+    hasStarted = true;
+
+    // Load frame 0 when the section gets close, instead of during initial page load.
     const first = await loadFrame(0);
     if (!first) return;
 
@@ -260,12 +300,8 @@ if (walkthroughEl && stepBtns.length) {
     updatePhase(0);
     updateProgressBar(0);
 
-    // 2. Load remaining frames sequentially in the background.
-    //    Sequential (not parallel) keeps memory pressure low and lets
-    //    the browser continue rendering without competing for bandwidth.
-    for (let i = 1; i < FRAME_COUNT; i++) {
-      await loadFrame(i);
-    }
+    preloadAround(0, 4);
+    onScroll();
   }
 
   // ── Rendering ─────────────────────────────────────────────────────────
@@ -278,11 +314,23 @@ if (walkthroughEl && stepBtns.length) {
 
   function scheduleRender(index) {
     pendingIndex = index;
+    preloadAround(index);
+    if (!frames[index]) {
+      void loadFrame(index).then(img => {
+        if (!img) return;
+        scheduleRender(index);
+      });
+    }
     if (rafId !== null) return;          // already scheduled, just update target
     rafId = requestAnimationFrame(() => {
       rafId = null;
-      if (pendingIndex !== renderedIndex) {
+      if (pendingIndex !== renderedIndex && frames[pendingIndex]) {
         drawImmediate(pendingIndex);
+      } else if (!frames[pendingIndex]) {
+        const fallback = getNearestLoaded(pendingIndex);
+        if (fallback) {
+          ctx.drawImage(fallback, 0, 0, nativeW, nativeH);
+        }
       }
     });
   }
@@ -311,7 +359,16 @@ if (walkthroughEl && stepBtns.length) {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  preload();
+  const startObserver = new IntersectionObserver(
+    entries => {
+      if (!entries[0]?.isIntersecting) return;
+      void startSequence();
+      startObserver.disconnect();
+    },
+    { rootMargin: '900px 0px' }
+  );
+
+  startObserver.observe(section);
 })();
 
 /* Header state */
@@ -324,6 +381,39 @@ function syncHeaderState() {
 
 syncHeaderState();
 window.addEventListener('scroll', syncHeaderState, { passive: true });
+
+/* Hero video autoplay reliability for iOS/mobile */
+(function () {
+  const heroVideo = document.querySelector('.hero-video');
+  if (!heroVideo) return;
+
+  function tryPlay() {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.playsInline = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
+
+    const playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  }
+
+  if (heroVideo.readyState >= 2) {
+    tryPlay();
+  } else {
+    heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tryPlay();
+  });
+
+  window.addEventListener('pageshow', tryPlay);
+  window.addEventListener('touchstart', tryPlay, { passive: true, once: true });
+})();
 
 /* ── Feature showcase tabs ───────────────────────────────────────────── */
 (function () {
@@ -425,6 +515,7 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
   const FRAME_COUNT = 178;
   const FRAME_DIR   = 'media/frames/0326/';
   const FRAME_EXT   = '.jpg';
+  const PRELOAD_RADIUS = 8;
 
   const section = document.getElementById('scrubSection2');
   const canvas  = document.getElementById('scrubCanvas2');
@@ -432,20 +523,29 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
 
   const ctx = canvas.getContext('2d', { alpha: false });
   const frames = new Array(FRAME_COUNT).fill(null);
+  const framePromises = new Array(FRAME_COUNT).fill(null);
 
   let pendingIndex  = 0;
   let renderedIndex = -1;
   let rafId         = null;
   let nativeW = 0;
   let nativeH = 0;
+  let hasStarted = false;
 
   function applyCanvasSize() {
     if (!nativeW) return;
-    const animSide = section.querySelector('.scrub-canvas-side');
-    const maxW = animSide
-      ? Math.min(animSide.clientWidth - 16, window.innerWidth * 0.46)
-      : window.innerWidth * 0.46;
-    const maxH = window.innerHeight * 0.82;
+    const isMobile = window.innerWidth <= 900;
+    const canvasSide = section.querySelector('.scrub-canvas-side');
+    let maxW, maxH;
+    if (isMobile) {
+      maxW = canvasSide ? canvasSide.clientWidth : window.innerWidth * 0.92;
+      maxH = window.innerHeight * 0.47;
+    } else {
+      maxW = canvasSide
+        ? Math.min(canvasSide.clientWidth - 16, window.innerWidth * 0.46)
+        : window.innerWidth * 0.46;
+      maxH = window.innerHeight * 0.82;
+    }
     const scale = Math.min(maxW / nativeW, maxH / nativeH);
     canvas.style.width  = Math.round(nativeW * scale) + 'px';
     canvas.style.height = Math.round(nativeH * scale) + 'px';
@@ -491,25 +591,58 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
   }
 
   function loadFrame(i) {
-    return new Promise(resolve => {
-      if (frames[i]) { resolve(frames[i]); return; }
+    if (i < 0 || i >= FRAME_COUNT) return Promise.resolve(null);
+    if (frames[i]) return Promise.resolve(frames[i]);
+    if (framePromises[i]) return framePromises[i];
+
+    framePromises[i] = new Promise(resolve => {
       const img = new Image();
-      img.onload  = () => { frames[i] = img; resolve(img); };
-      img.onerror = () => resolve(null);
+      img.decoding = 'async';
+      img.onload  = () => {
+        frames[i] = img;
+        framePromises[i] = null;
+        resolve(img);
+      };
+      img.onerror = () => {
+        framePromises[i] = null;
+        resolve(null);
+      };
       img.src = `${FRAME_DIR}frame_${pad(i)}${FRAME_EXT}`;
     });
+
+    return framePromises[i];
   }
 
-  async function preload() {
+  function preloadAround(index, radius = PRELOAD_RADIUS) {
+    const start = Math.max(0, index - radius);
+    const end = Math.min(FRAME_COUNT - 1, index + radius);
+    for (let i = start; i <= end; i++) {
+      void loadFrame(i);
+    }
+  }
+
+  function getNearestLoaded(index) {
+    if (frames[index]) return frames[index];
+    for (let offset = 1; offset < FRAME_COUNT; offset++) {
+      const prev = index - offset;
+      const next = index + offset;
+      if (prev >= 0 && frames[prev]) return frames[prev];
+      if (next < FRAME_COUNT && frames[next]) return frames[next];
+    }
+    return null;
+  }
+
+  async function startSequence() {
+    if (hasStarted) return;
+    hasStarted = true;
+
     const first = await loadFrame(0);
     if (!first) return;
     initCanvas(first);
     drawImmediate(0);
     canvas.classList.add('is-ready');
     onScroll2();
-    for (let i = 1; i < FRAME_COUNT; i++) {
-      await loadFrame(i);
-    }
+    preloadAround(0, 4);
   }
 
   function drawImmediate(index) {
@@ -521,10 +654,24 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
 
   function scheduleRender(index) {
     pendingIndex = index;
+    preloadAround(index);
+    if (!frames[index]) {
+      void loadFrame(index).then(img => {
+        if (!img) return;
+        scheduleRender(index);
+      });
+    }
     if (rafId !== null) return;
     rafId = requestAnimationFrame(() => {
       rafId = null;
-      if (pendingIndex !== renderedIndex) drawImmediate(pendingIndex);
+      if (pendingIndex !== renderedIndex && frames[pendingIndex]) {
+        drawImmediate(pendingIndex);
+      } else if (!frames[pendingIndex]) {
+        const fallback = getNearestLoaded(pendingIndex);
+        if (fallback) {
+          ctx.drawImage(fallback, 0, 0, nativeW, nativeH);
+        }
+      }
     });
   }
 
@@ -557,5 +704,14 @@ window.addEventListener('scroll', syncHeaderState, { passive: true });
     window.addEventListener('scroll', onScroll2, { passive: true });
   }
 
-  preload();
+  const startObserver = new IntersectionObserver(
+    entries => {
+      if (!entries[0]?.isIntersecting) return;
+      void startSequence();
+      startObserver.disconnect();
+    },
+    { rootMargin: '900px 0px' }
+  );
+
+  startObserver.observe(section);
 })();
