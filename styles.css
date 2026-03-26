@@ -185,6 +185,8 @@ video {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.045em;
   line-height: 1;
   border-radius: 8px;
   transition:
@@ -200,8 +202,6 @@ video {
   background: rgba(255, 255, 255, 0.93);
   color: #080e18;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0em;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -217,7 +217,6 @@ video {
   background: transparent;
   color: var(--text-2);
   font-size: 13px;
-  font-weight: 600;
 }
 
 .btn-elite-outline:hover {
@@ -232,8 +231,6 @@ video {
   background: var(--teal);
   color: #fff;
   font-size: 14.5px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
@@ -250,8 +247,6 @@ video {
   background: rgba(12, 16, 24, 0.5);
   color: var(--text-60);
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 .btn-ghost-lg:hover {
@@ -345,8 +340,6 @@ video {
   background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
   color: #f8fbff;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
   border-color: rgba(45, 182, 202, 0.28);
   box-shadow: 0 10px 24px rgba(45, 182, 202, 0.2);
 }
